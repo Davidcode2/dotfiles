@@ -195,7 +195,7 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id nitrogen --restore
 
 # remove top bar
-new_window 1pixel
+# new_window 1pixel # uncomment to remove top bar
 
 # hide borders 
 hide_edge_borders smart

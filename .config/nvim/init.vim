@@ -19,18 +19,21 @@ filetype plugin on
 syntax on
 
 " vimwiki
-let g:vimwiki_list = [{ 'path': '~/notes/',
+let g:vimwiki_list = [{ 'path': '~/OneDrive/notes/',
        \ 'syntax':'markdown', 'ext': '.md' }]
 
 " vim-zettel
 let g:zettel_options = [{"template" :  "~/.config/nvim/zettelTemplate.tpl"}]
 
+" keymapping
 map gx :!firefox <c-r><c-a>
+nnoremap ö :
 
 colorscheme gruvbox
 
 set number
 set colorcolumn=80
+
 
 " enable nvim to work with language servers
 lua << EOF
@@ -60,6 +63,14 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
     buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+-- Use LSP as the handler for omnifunc.
+--    See `:help omnifunc` and `:help ins-completion` for more information.
+vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+-- Use LSP as the handler for formatexpr.
+--    See `:help formatexpr` for more information.
+vim.api.nvim_buf_set_option(0, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
 end
 
 for _, lsp in ipairs(servers) do
