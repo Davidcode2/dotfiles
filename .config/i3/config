@@ -160,6 +160,12 @@ bindsym Mod4+2 exec firefox
 # open firefox in workspace 2
 assign [class="firefox"] $ws2
 
+# take a screenshot of a screen region and copy it to a clipboard
+bindsym --release Shift+Print exec "$HOME/src/screencapture -s /home/jakob/Pictures/Screenshots/"
+
+# take a screenshot of a whole window and copy it to a clipboard
+bindsym --release Print exec "$HOME/src/screencapture /home/jakob/Pictures/Screenshots/"
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
