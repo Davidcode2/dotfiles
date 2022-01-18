@@ -25,7 +25,7 @@
 
 
 :root {
-  --navbarWidth     : 540px; /* Set width of navbar. Use px for a fixed width 
+  --navbarWidth     : 30vw; /* 540px Set width of navbar. Use px for a fixed width 
                                 or vw for a percentage of your window. */
   --animationSpeed  : 0.15s;
 }
@@ -189,3 +189,13 @@ tab[selected="true"] .tab-background {
 .tabbrowser-tab .tab-label  { color: var(--uc-inverted-colour) !important; }
 .tab-close-button { fill: var(--uc-inverted-colour) !important }
 
+/* fonts */
+#urlbar, #TabsToolbar .tabbrowser-tab, menu, .autocomplete-richlistbox, #menubar-items, statuspanel[type="overLink"] .statuspanel-label, toolbarbutton, #placeContent, #placesList, .editBMPanel_rowLabel, .textbox-input-box, .viewer-title.label.toolbar, .downloadTarget, .downloadDetails, #bookmarks-view-children, #sidebar-search-label, #sidebar-title, .menubar-text {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+}
+    
+#clientBox {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
