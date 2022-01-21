@@ -191,11 +191,11 @@ tab[selected="true"] .tab-background {
 
 /* fonts */
 #urlbar, #TabsToolbar .tabbrowser-tab, menu, .autocomplete-richlistbox, #menubar-items, statuspanel[type="overLink"] .statuspanel-label, toolbarbutton, #placeContent, #placesList, .editBMPanel_rowLabel, .textbox-input-box, .viewer-title.label.toolbar, .downloadTarget, .downloadDetails, #bookmarks-view-children, #sidebar-search-label, #sidebar-title, .menubar-text {
-    font-size: 13px !important;
-    font-weight: 600 !important;
+    font-size: 12px !important;
+    font-weight: 550 !important;
 }
     
 #clientBox {
-    font-size: 12px !important;
-    font-weight: 600 !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
 }
