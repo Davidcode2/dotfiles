@@ -132,3 +132,6 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
+
+export RANGER_LOAD_DEFAULT_RC=FALSE
+source /usr/share/nvm/init-nvm.sh

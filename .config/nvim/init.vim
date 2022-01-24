@@ -37,7 +37,6 @@ let g:netrw_browsex_viewer = "xdg-open"
 " v is for visual mode
 inoremap jh <Esc>
 inoremap ö ;
-"map gx :!firefox <c-r><c-a>
 nnoremap ö :
 vnoremap ö :
 nnoremap <C-s> :Ag<enter>
@@ -52,7 +51,7 @@ set colorcolumn=80
 lua << EOF
 local nvim_lsp = require('lspconfig')
 -- add additional language servers in here:
-local servers = { 'clangd' }
+local servers = { 'clangd', 'pyright' }
 
 -- adds keymaps
 local on_attach = function(client, bufnr)
