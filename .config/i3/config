@@ -48,7 +48,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -201,10 +201,13 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id nitrogen --restore
 
 # remove top bar
-# new_window 1pixel # uncomment to remove top bar
+new_window 1pixel # uncomment to remove top bar
 
 # hide borders 
 hide_edge_borders smart
+
+# start picom # currently doesn't work
+# exec picom --experimental-backends -b
 
 #####################
 ### change colors ###
