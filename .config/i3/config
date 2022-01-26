@@ -26,6 +26,12 @@ exec --no-startup-id dex --autostart --environment i3
 # keyboard layout
 exec --no-startup-id setxkbmap de
 
+# enable gaps
+# inner for the margin between the border and the content of a window
+# outer for the margin between the window and the screens edges / other windows
+#gaps inner 2
+#gaps outer 2
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -36,6 +42,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+
+# start polybar on startup
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -48,7 +57,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -86,7 +95,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+ö split h
+bindsym $mod+g split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -203,6 +212,9 @@ exec --no-startup-id nitrogen --restore
 # remove top bar
 new_window 1pixel # uncomment to remove top bar
 
+# border size
+default_border pixel 1
+
 # hide borders 
 hide_edge_borders smart
 
@@ -224,28 +236,30 @@ set $aqua #689d68
 set $gray #a89984
 set $darkgray #1d2021
 
-#start of bar section
-bar {
-    position bottom
-    status_command i3status
-    colors {
-        # bar background color
-        background $bg
-        # text color used for blocks that do not have a color specified.
-        statusline $yellow
-        # workspaces section            
-        #                    border  backgr. text
-        focused_workspace    $aqua $aqua $darkgray
-        inactive_workspace   $darkgray $darkgray $yellow
-        active_workspace     $darkgray $darkgray $yellow
-        urgent_workspace     $red $red $bg
-    }
-}
+
+##start of bar section
+#bar {
+#    position bottom
+#    status_command i3status
+#    colors {
+#        # bar background color
+#        background $bg
+#        # text color used for blocks that do not have a color specified.
+#        statusline $yellow
+#        # workspaces section            
+#        #                    border  backgr. text
+#        focused_workspace    $aqua $aqua $darkgray
+#        inactive_workspace   $darkgray $darkgray $yellow
+#        active_workspace     $darkgray $darkgray $yellow
+#        urgent_workspace     $red $red $bg
+#    }
+#}
 #end of bar section
 
-# green gruvbox
-# class                 border|backgr|text|indicator|child_border
-client.focused          $green $green $darkgray $purple $darkgray
-client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
-client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
-client.urgent           $red $red $white $red $red
+# class                 border  backgr. text    indicator child_border
+client.focused          #20b55b #285577 #ffffff #2e9ef4   #20b55b 
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+client.background       #ffffff
