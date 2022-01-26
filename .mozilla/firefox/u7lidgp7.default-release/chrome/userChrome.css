@@ -25,7 +25,7 @@
 
 
 :root {
-  --navbarWidth     : 30vw; /* 540px Set width of navbar. Use px for a fixed width 
+  --navbarWidth     : 600px; /* 540px Set width of navbar. Use px for a fixed width 
                                 or vw for a percentage of your window. */
   --animationSpeed  : 0.15s;
 }
