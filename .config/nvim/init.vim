@@ -36,16 +36,16 @@ let g:netrw_browsex_viewer = "xdg-open"
 " n is for normal mode 
 " v is for visual mode
 inoremap jh <Esc>
-inoremap ö ;
+" inoremap ö ;
 nnoremap ö :
 vnoremap ö :
-nnoremap <C-s> :Ag<enter>
+nnoremap <C-s> :Ag<cr>
 
+" colorscheme
 colorscheme gruvbox
 
 set number
 set colorcolumn=80
-
 
 " enable nvim to work with language servers
 lua << EOF

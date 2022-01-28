@@ -219,7 +219,7 @@ default_border pixel 1
 hide_edge_borders smart
 
 # start picom # currently doesn't work
-# exec picom --experimental-backends -b
+exec picom --experimental-backends -b
 
 #####################
 ### change colors ###
