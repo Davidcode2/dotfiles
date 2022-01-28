@@ -46,6 +46,11 @@ exec --no-startup-id nm-applet
 # start polybar on startup
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# keybinding for starting polydoro timer
+bindsym $mod+p exec --no-startup-id python ~/.config/polybar/polydoro/polydoro.py
+# keybinding for cancelling polydoro timer
+bindsym $mod+Shift+p exec pkill -f polydoro.py > /tmp/polydoro.output
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status

@@ -39,6 +39,7 @@ height = 9
 ;offset-x = 1%
 ;offset-y = 1%
 fixed-center = false
+enable-ipc = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
