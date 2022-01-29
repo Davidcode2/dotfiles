@@ -31,6 +31,11 @@ let g:vimwiki_global_ext = 0
 " netrw-gx
 let g:netrw_browsex_viewer = "xdg-open"
 
+" automatically change to notes dir when in notes
+autocmd BufEnter * if expand("%:p:h") =~# '**/notes' | lcd %:p:h | endif
+" map change dir command
+nnoremap <leader>cd :lcd %:p:h<cr>
+
 " keymapping
 " i is for input mode
 " n is for normal mode 

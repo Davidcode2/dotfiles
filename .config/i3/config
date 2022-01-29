@@ -223,7 +223,7 @@ default_border pixel 1
 # hide borders 
 hide_edge_borders smart
 
-# start picom # currently doesn't work
+# start picom
 exec picom --experimental-backends -b
 
 #####################
@@ -240,26 +240,6 @@ set $purple #b16286
 set $aqua #689d68
 set $gray #a89984
 set $darkgray #1d2021
-
-
-##start of bar section
-#bar {
-#    position bottom
-#    status_command i3status
-#    colors {
-#        # bar background color
-#        background $bg
-#        # text color used for blocks that do not have a color specified.
-#        statusline $yellow
-#        # workspaces section            
-#        #                    border  backgr. text
-#        focused_workspace    $aqua $aqua $darkgray
-#        inactive_workspace   $darkgray $darkgray $yellow
-#        active_workspace     $darkgray $darkgray $yellow
-#        urgent_workspace     $red $red $bg
-#    }
-#}
-#end of bar section
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #20b55b #285577 #ffffff #2e9ef4   #20b55b 
