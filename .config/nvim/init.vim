@@ -34,7 +34,7 @@ let g:vimwiki_global_ext = 1
 let g:netrw_browsex_viewer = "xdg-open"
 
 " automatically change to notes dir when in notes
-autocmd BufEnter * if expand("%:p:h") =~# '**/notes' | lcd %:p:h | endif
+autocmd BufEnter * if expand("%:p:h") =~# '**/notes$' | lcd %:p:h | endif
 " map change dir command
 nnoremap <leader>cd :lcd %:p:h<cr>
 
