@@ -2,9 +2,9 @@
 
 echo "starting installation script"
 
-package=$(./packages.txt)
-while read package;
+while read line;
 do 
-	echo "yay -S $package --noconfirm --needed --quiet";
-done
-echo "yay -Syu"
+	yay -S $line --noconfirm --needed --quiet
+done < packages1.txt
+
+yay -Syu
