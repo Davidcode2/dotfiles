@@ -15,11 +15,18 @@ source /home/jakob/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # set default pager to nvimpager
 export PAGER=nvimpager
 
+# add src folder to path 
+# the $PATH: at the beginning signifies that home/jakob.. should be appended to 
+# the end of the PATH.
+
 # add alias for dotfiles repo
 alias config='/usr/bin/git --git-dir=/home/jakob/.cfg/ --work-tree=/home/jakob'
 
 # add alias for nvim 
 alias vi='/usr/bin/nvim'
+
+# alias for zathura, opening it always as a new process
+alias zathura='zathura --fork'
 
 ################
 ## appearance ##

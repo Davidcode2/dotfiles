@@ -36,7 +36,7 @@ let g:netrw_browsex_viewer = "xdg-open"
 " automatically change to notes dir when in notes
 autocmd BufEnter * if expand("%:p:h") =~# '**/notes$' | lcd %:p:h | endif
 " map change dir command
-nnoremap <leader>cd :lcd %:p:h<cr>
+nnoremap <leader>cd :lcd %:p:h<cr> :pwd<cr>
 
 " keymapping
 " i is for input mode
