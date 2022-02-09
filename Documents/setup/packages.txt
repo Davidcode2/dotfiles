@@ -38,7 +38,7 @@ linux
 linux-firmware
 m4
 make
-mesa-demos-git
+mesa-demos
 meta-group-texlive-most
 mtools
 neofetch
@@ -49,7 +49,6 @@ networkmanager
 nitrogen
 nvimpager-git
 nvm
-oh-my-zsh-git
 onedrive-abraunegg
 openssh
 os-prober
