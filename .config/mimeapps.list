@@ -1,6 +1,0 @@
-[Default Applications]
-image/png=feh.desktop
-application/pdf=org.pwmt.zathura.desktop
-
-[Added Associations]
-text/markdown=nvim.desktop;firefox.desktop;
