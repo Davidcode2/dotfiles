@@ -94,10 +94,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -186,11 +186,17 @@ bindsym Mod4+2 exec firefox
 # open firefox in workspace 2
 assign [class="firefox"] $ws2
 
+# make urxvt always floating (for inkscape input)
+for_window [class="URxvt"] floating enable
+
+# test directory specific
+for_window [title="x200: ~/work"] floating enable
+
 # take a screenshot of a screen region and copy it to a clipboard
-bindsym --release Shift+Print exec "$HOME/src/screencapture -s /home/jakob/Pictures/Screenshots/"
+bindsym --release Shift+Print exec "/usr/local/bin/screencapture -s /home/jakob/Pictures/Screenshots/"
 
 # take a screenshot of a whole window and copy it to a clipboard
-bindsym --release Print exec "$HOME/src/screencapture /home/jakob/Pictures/Screenshots/"
+bindsym --release Print exec "/usr/local/bin/screencapture /home/jakob/Pictures/Screenshots/"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -266,3 +272,10 @@ client.background       #ffffff
 #####################
 
 exec xset r rate 250 50
+
+#####################
+### lecture  flow ###
+#####################
+
+bindsym Mod4+l exec --no-startup-id python /usr/local/bin/university-setup-master/scripts/rofi-lectures.py
+bindsym Mod4+c exec --no-startup-id python /usr/local/bin/university-setup-master/scripts/rofi-courses.py

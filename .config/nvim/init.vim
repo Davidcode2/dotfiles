@@ -30,11 +30,19 @@ let g:zettel_format = "%y%m%d-%H%M-%title"
 let g:markdown_fenced_languages = ['html', 'vim', 'python', 'css', 'typescript', 'javascript', 'c']
 let g:vimwiki_global_ext = 1
 
+" inkscape-figures
+inoremap <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.'figures/"'<CR><CR>:w<CR>
+nnoremap <C-f> : silent exec '!inkscape-figures edit "'.'figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
+
 " netrw-gx
-let g:netrw_browsex_viewer = "xdg-open"
+" let g:netrw_browsex_viewer = "xdg-open"
 
 " automatically change to notes dir when in notes
 autocmd BufEnter * if expand("%:p:h") =~# '**/notes$' | lcd %:p:h | endif
+
+" map ß to put <br> and then enter if in vimwiki file
+autocmd Filetype vimwiki inoremap <buffer> ß <br><cr>
+
 " map change dir command
 nnoremap <leader>cd :lcd %:p:h<cr> :pwd<cr>
 
@@ -54,11 +62,15 @@ colorscheme gruvbox
 set number
 set colorcolumn=80
 
+let g:LanguageClient_serverCommands = {
+    \ 'sql': ['sql-language-server', 'up', '--method', 'stdio'],
+    \ }
+
 " enable nvim to work with language servers
 lua << EOF
 local nvim_lsp = require('lspconfig')
 -- add additional language servers in here:
-local servers = { 'clangd', 'pyright' }
+local servers = { 'clangd', 'pyright', 'tsserver', 'angularls', 'sqlls'}
 
 -- adds keymaps
 local on_attach = function(client, bufnr)
@@ -77,7 +89,7 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+    buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
     buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
