@@ -1,6 +1,11 @@
 [Default Applications]
 image/png=feh.desktop
 application/pdf=org.pwmt.zathura.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-LOY3H1.desktop
+message/rfc822=userapp-Thunderbird-LOY3H1.desktop
+x-scheme-handler/mid=userapp-Thunderbird-LOY3H1.desktop
 
 [Added Associations]
-text/markdown=nvim.desktop;firefox.desktop;
+text/markdown=nvim.desktop;
+x-scheme-handler/mailto=userapp-Thunderbird-LOY3H1.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-LOY3H1.desktop;

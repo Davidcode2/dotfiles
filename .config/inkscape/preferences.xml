@@ -125,12 +125,13 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="231.832"
-         height="134.221" />
+         width="111.641"
+         height="90.7412" />
       <eventcontext
          id="3dbox"
          style="stroke:none;stroke-linejoin:round;"
-         usecurrent="1">
+         usecurrent="1"
+         persp="perspective10747">
         <side
            id="XYfront"
            style="fill:#8686bf;stroke:none;stroke-linejoin:round;"
@@ -161,7 +162,9 @@
          style="fill:red;"
          end="0"
          start="0"
-         usecurrent="1" />
+         usecurrent="1"
+         rx="533.696"
+         ry="113.889" />
       <eventcontext
          id="star"
          magnitude="5"
@@ -171,19 +174,21 @@
          id="spiral"
          style="fill:none;stroke:black"
          expansion="1"
-         usecurrent="0" />
+         usecurrent="0"
+         revolution="3" />
     </group>
     <group
        id="freehand"
        style="fill:none;stroke:black;stroke-opacity:1;stroke-linejoin:miter;stroke-linecap:butt;">
       <eventcontext
          id="pencil"
-         tolerance="20"
+         tolerance="10"
          selcue="1"
          style="stroke-width:1px;"
          usecurrent="0"
          average_all_sketches="1"
-         pressure="0" />
+         pressure="0"
+         simplify="0" />
       <eventcontext
          id="pen"
          mode="drag"
@@ -194,7 +199,7 @@
     <eventcontext
        id="calligraphic"
        style="fill:black;fill-opacity:1;fill-rule:nonzero;stroke:none;"
-       mass="2"
+       mass="1"
        angle="30"
        width="15.118"
        thinning="10"
@@ -320,7 +325,7 @@
        font_sample="AaBbCcIiPpQq12369$€¢?.;/()"
        show_sample_in_list="1"
        use_svg2="1"
-       style="fill:black;fill-opacity:1;line-height:1.25;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;"
+       style="line-height:1.25;font-family:sans-serif;font-size:16px"
        selcue="1" />
     <eventcontext
        id="nodes"
@@ -355,7 +360,8 @@
        doh="1"
        dos="1"
        dol="1"
-       doo="1" />
+       doo="1"
+       mode="0" />
     <eventcontext
        id="spray"
        selcue="1"
@@ -392,11 +398,26 @@
        id="connector"
        style="fill:none;fill-rule:evenodd;stroke:black;stroke-opacity:1;stroke-linejoin:miter;stroke-width:1px;stroke-linecap:butt;"
        selcue="1"
-       curvature="0" />
+       curvature="0"
+       length="100" />
     <eventcontext
        id="paintbucket"
        style="fill:#a0a0a0;stroke:none;"
-       usecurrent="1" />
+       usecurrent="1"
+       offset="0"
+       offsetunits="mm" />
+    <group
+       id="measure"
+       fontsize="10">
+      <group
+         id="measure-start"
+         x="377.531"
+         y="172.277" />
+      <group
+         id="measure-end"
+         x="412.735"
+         y="347.244" />
+    </group>
   </group>
   <group
      id="palette">
@@ -560,7 +581,8 @@
        state="1" />
     <group
        id="preferences"
-       state="1" />
+       state="1"
+       page="12" />
     <group
        id="gradienteditor" />
     <group
@@ -599,12 +621,14 @@
        ask="1"
        ask_svg="1"
        link="link"
-       scale="optimizeSpeed" />
+       scale="auto"
+       import_mode_svg="include" />
     <group
        id="debug"
        redirect="0" />
     <group
-       id="clonetiler" />
+       id="clonetiler"
+       dotrace="0" />
     <group
        id="gridtiler" />
     <group
@@ -924,12 +948,15 @@
     </group>
     <group
        id="rendering" />
+    <group
+       id="font"
+       unitType="2" />
   </group>
   <group
      id="extensions" />
   <group
      id="desktop"
-     style="">
+     style="font-size:26.66666667px;stroke-width:1.5924;stroke:black;fill:white">
     <group
        width="640"
        height="480"
@@ -1048,4 +1075,7 @@
      menuIcons_canvas="0"
      menuIcons_layers="0"
      menuIcons_objects="0" />
+  <group
+     id="live_effects"
+     flattening="0" />
 </inkscape>
