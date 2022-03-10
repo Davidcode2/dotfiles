@@ -58,6 +58,22 @@ nnoremap ö :
 vnoremap ö :
 nnoremap <C-s> :Ag<cr>
 
+command Bd bp\|bd \#
+
+" surround
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O 
+
+" when typing closing bracket do not write again if it's already there.
+inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+
 " colorscheme
 colorscheme gruvbox
 
