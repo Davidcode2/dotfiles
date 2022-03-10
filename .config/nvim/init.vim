@@ -75,12 +75,21 @@ inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
 inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
 
 " colorscheme
+set termguicolors
+let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
 
 " show line numbers
 set number
+" set relative line numbers
+autocmd BufEnter * set relativenumber
+autocmd BufLeave * set norelativenumber
 " show line at width
 set colorcolumn=80
+
+highlight CursorLineNr guibg=#1d2021
+set cursorline
+set cursorlineopt=number
 
 autocmd Filetype css setlocal tabstop=2
 set tabstop=2
