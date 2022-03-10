@@ -186,6 +186,9 @@ bindsym Mod4+2 exec firefox
 # open firefox in workspace 2
 assign [class="firefox"] $ws2
 
+assign [class="MQTT-Explorer"] $ws9
+assign [class="Microsoft-edge-dev"] $ws10
+
 # make urxvt always floating (for inkscape input)
 for_window [class="URxvt"] floating enable
 
@@ -200,27 +203,27 @@ bindsym --release Print exec "/usr/local/bin/screencapture /home/jakob/Pictures/
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+# These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+	bindsym h resize shrink width 10 px or 10 ppt
+		bindsym j resize grow height 10 px or 10 ppt
+		bindsym k resize shrink height 10 px or 10 ppt
+		bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+# same bindings, but for the arrow keys
+		bindsym Left resize shrink width 10 px or 10 ppt
+		bindsym Down resize grow height 10 px or 10 ppt
+		bindsym Up resize shrink height 10 px or 10 ppt
+		bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+# back to normal: Enter or Escape or $mod+r
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+		bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -279,3 +282,52 @@ exec xset r rate 250 50
 
 bindsym Mod4+l exec --no-startup-id python /usr/local/bin/university-setup-master/scripts/rofi-lectures.py
 bindsym Mod4+c exec --no-startup-id python /usr/local/bin/university-setup-master/scripts/rofi-courses.py
+
+#####################
+###  workspaces   ###
+#####################
+
+set $zeiss-workspace [z]eiss [s]ingleToMulti [t]emplateApp [e]dge [m]qtt-explorer
+bindsym $mod+o mode "$zeiss-workspace"
+
+mode "$zeiss-workspace" {
+	bindsym z exec alacritty --working-directory ~/Zeiss/
+	bindsym t exec alacritty --working-directory ~/Zeiss/scaleit-app-template/DomainSoftware
+	bindsym s exec alacritty --working-directory ~/Zeiss/singleToMulti/
+	
+	bindsym m exec mqtt-explorer
+	bindsym e exec microsoft-edge-dev
+
+	# split in horizontal orientation
+	bindsym Mod1+g split h
+
+	# split in vertical orientation
+	bindsym Mod1+v split v
+
+	# change focus
+	bindsym $mod+h focus left
+	bindsym $mod+j focus down
+	bindsym $mod+k focus up
+	bindsym $mod+l focus right
+	
+	# alternatively, you can use the cursor keys:
+	bindsym $mod+Left focus left
+	bindsym $mod+Down focus down
+	bindsym $mod+Up focus up
+	bindsym $mod+Right focus right
+	
+	# move focused window
+	bindsym $mod+Shift+h move left
+	bindsym $mod+Shift+j move down
+	bindsym $mod+Shift+k move up
+	bindsym $mod+Shift+l move right
+	
+	# alternatively, you can use the cursor keys:
+	bindsym $mod+Shift+Left move left
+	bindsym $mod+Shift+Down move down
+	bindsym $mod+Shift+Up move up
+	bindsym $mod+Shift+Right move right
+
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+}
