@@ -29,12 +29,24 @@ source $HOME/.config/nvim/vimwiki.vim
 source $HOME/.config/nvim/lsp.lua
 source $HOME/.config/nvim/vimspector.vim
 
-" inkscape-figures
-inoremap <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.'figures/"'<CR><CR>:w<CR>
-nnoremap <C-f> : silent exec '!inkscape-figures edit "'.'figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
-
 " netrw-gx
 " let g:netrw_browsex_viewer = "xdg-open"
+
+" permanent undo
+set undofile
+
+" colorscheme
+set termguicolors
+let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
+
+" show line numbers
+set number
+" set relative line numbers
+autocmd BufEnter * set relativenumber
+autocmd BufLeave * set norelativenumber
+" show line at width
+set colorcolumn=80
 
 " automatically change to notes dir when in notes
 autocmd BufEnter * if expand("%:p:h") =~# '**/notes$' | lcd %:p:h | endif
@@ -44,9 +56,6 @@ autocmd BufEnter * if expand("%:p:h:h") =~# '**/WS\d\d$\|**/SS\d\d$' | lcd %:p:h
 
 " map ß to put <br> and then enter if in vimwiki file
 autocmd Filetype vimwiki inoremap <buffer> ß <br><cr>
-
-" map change dir command
-nnoremap <leader>cd :lcd %:p:h<cr> :pwd<cr>
 
 " keymapping
 " i is for input mode
@@ -58,6 +67,10 @@ nnoremap ö :
 vnoremap ö :
 nnoremap <C-s> :Ag<cr>
 
+" map change dir command
+nnoremap <leader>cd :lcd %:p:h<cr> :pwd<cr>
+
+" delete buffer while retaining the split pane
 command Bd bp\|bd \#
 
 " surround
@@ -74,18 +87,9 @@ inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
 inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
 inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
 
-" colorscheme
-set termguicolors
-let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
-
-" show line numbers
-set number
-" set relative line numbers
-autocmd BufEnter * set relativenumber
-autocmd BufLeave * set norelativenumber
-" show line at width
-set colorcolumn=80
+" inkscape-figures
+inoremap <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.'figures/"'<CR><CR>:w<CR>
+nnoremap <C-f> : silent exec '!inkscape-figures edit "'.'figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
 
 highlight CursorLineNr guibg=#1d2021
 set cursorline
