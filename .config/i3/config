@@ -26,12 +26,6 @@ exec --no-startup-id dex --autostart --environment i3
 # keyboard layout
 exec --no-startup-id setxkbmap de
 
-# enable gaps
-# inner for the margin between the border and the content of a window
-# outer for the margin between the window and the screens edges / other windows
-#gaps inner 2
-#gaps outer 2
-
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -43,19 +37,10 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+exec --no-startup-id redshift -l 48.52266:9.05222
+
 # start polybar on startup
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-# keybinding for starting polydoro timer
-bindsym $mod+t exec --no-startup-id python ~/.config/polybar/polydoro/polydoro.py
-# keybinding for cancelling polydoro timer
-bindsym $mod+Shift+t exec pkill -f polydoro.py > /tmp/polydoro.output
-
-# keybinding to start rofi bluetooth manager
-bindsym $mod+b exec --no-startup-id rofi-bluetooth
-
-# keybinding to start rofi wifi manager
-bindsym $mod+Shift+w exec --no-startup-id /usr/local/bin/rofi-wifi-menu/rofi-wifi-menu.sh
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -181,26 +166,6 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# shortcuts for frequently used programs
-bindsym Mod4+2 exec firefox 
-# open firefox in workspace 2
-assign [class="firefox"] $ws2
-
-assign [class="MQTT-Explorer"] $ws9
-assign [class="Microsoft-edge-dev"] $ws10
-
-# make urxvt always floating (for inkscape input)
-for_window [class="URxvt"] floating enable
-
-# test directory specific
-for_window [title="x200: ~/work"] floating enable
-
-# take a screenshot of a screen region and copy it to a clipboard
-bindsym --release Shift+Print exec "/usr/local/bin/screencapture -s /home/jakob/Pictures/Screenshots/"
-
-# take a screenshot of a whole window and copy it to a clipboard
-bindsym --release Print exec "/usr/local/bin/screencapture /home/jakob/Pictures/Screenshots/"
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
 # These bindings trigger as soon as you enter the resize mode
@@ -231,6 +196,12 @@ bindsym $mod+r mode "resize"
 ##########################################
 ############# Customization ##############
 ##########################################
+
+# enable gaps
+# inner for the margin between the border and the content of a window
+# outer for the margin between the window and the screens edges / other windows
+#gaps inner 2
+#gaps outer 2
 
 # wallpaper
 exec --no-startup-id nitrogen --restore
@@ -274,7 +245,7 @@ client.background       #ffffff
 ### xset (speed)  ###
 #####################
 
-exec xset r rate 250 50
+exec xset r rate 300 50
 
 #####################
 ### lecture  flow ###
@@ -331,3 +302,43 @@ mode "$zeiss-workspace" {
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }
+
+#####################
+###  shortcuts    ###
+#####################
+
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -5
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +5
+
+# shortcuts for frequently used programs
+bindsym Mod4+2 exec firefox 
+# open firefox in workspace 2
+assign [class="firefox"] $ws2
+
+assign [class="MQTT-Explorer"] $ws9
+assign [class="Microsoft-edge-dev"] $ws10
+
+assign [class="Inkscape"] $ws5
+
+# make urxvt always floating (for inkscape input)
+for_window [class="URxvt"] floating enable
+
+# take a screenshot of a screen region and copy it to a clipboard
+bindsym --release Shift+Print exec "/usr/local/bin/screencapture -s /home/jakob/Pictures/Screenshots/"
+
+# take a screenshot of a whole window and copy it to a clipboard
+bindsym --release Print exec "/usr/local/bin/screencapture /home/jakob/Pictures/Screenshots/"
+
+# keybinding for starting polydoro timer
+bindsym $mod+t exec --no-startup-id python ~/.config/polybar/polydoro/polydoro.py
+# keybinding for cancelling polydoro timer
+bindsym $mod+Shift+t exec pkill -f polydoro.py > /tmp/polydoro.output
+
+# keybinding to start rofi bluetooth manager
+bindsym $mod+b exec --no-startup-id rofi-bluetooth
+
+# keybinding to start rofi wifi manager
+bindsym $mod+Shift+w exec --no-startup-id /usr/local/bin/rofi-wifi-menu/rofi-wifi-menu.sh
+
+# keybinding to open current courses url
+# bindsym Mod4+u exec "yq .url ~/current-course/info.yaml | xargs firefox"

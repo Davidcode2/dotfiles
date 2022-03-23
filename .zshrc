@@ -17,6 +17,10 @@ export PAGER=nvimpager
 # the $PATH: at the beginning signifies that home/jakob.. should be appended to 
 # the end of the PATH.
 
+################
+##  aliases   ##
+################
+
 # add alias for dotfiles repo
 alias config='/usr/bin/git --git-dir=/home/jakob/.cfg/ --work-tree=/home/jakob'
 
@@ -27,7 +31,24 @@ alias vi='/usr/bin/nvim'
 alias zathura='zathura --fork'
 
 # copy current path
-alias cp.='xclip -selection c <<< $(pwd)'
+alias y.='xclip -selection c <<< $(pwd)'
+
+# start using lecture rofi script
+alias lectureRofi='python /usr/local/bin/university-setup-master/scripts/rofi-lectures.py'
+
+# open url of current course
+alias oUrl='yq .url ~/current-course/info.yaml | xargs firefox&'
+
+# aliases for changing directories
+alias cdA='cd ~/OneDrive/HochschuleAA/Allgemein'
+
+alias cdZ='cd ~/Zeiss'
+
+alias cdO='cd ~/Documents/Odin'
+
+alias cdC='cd ~/current-course'
+
+alias cdD='cd ~/Downloads'
 
 ################
 ## appearance ##
@@ -51,13 +72,15 @@ PATH=/home/jakob/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/u
 ##   history  ##
 ################
 
-#set history size
+# set history size
 export HISTSIZE=10000
-#save history after logout
-# export SAVEHIST=10000
-# #history file
-# export HISTFILE=~/.zhistory
+# save history after logout
+export SAVEHIST=10000
+# history file
+export HISTFILE=~/.zhistory
 # #append into history file
-# setopt INC_APPEND_HISTORY
-#save only one command if 2 common are same and consistent
-setopt HIST_IGNORE_DUPS
+setopt INC_APPEND_HISTORY
+# save only one command if 2 consecutive are equal
+#setopt HIST_IGNORE_DUPS
+# save only one command if 2 common are same and consistent
+setopt HIST_IGNORE_ALL_DUPS
