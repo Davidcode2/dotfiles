@@ -21,6 +21,8 @@ export PAGER=nvimpager
 ##  aliases   ##
 ################
 
+alias cat='/bin/bat'
+
 # add alias for dotfiles repo
 alias config='/usr/bin/git --git-dir=/home/jakob/.cfg/ --work-tree=/home/jakob'
 
@@ -40,15 +42,18 @@ alias lectureRofi='python /usr/local/bin/university-setup-master/scripts/rofi-le
 alias oUrl='yq .url ~/current-course/info.yaml | xargs firefox&'
 
 # aliases for changing directories
-alias cdA='cd ~/OneDrive/HochschuleAA/Allgemein'
+# with global flag, to expand with <Ctrl+x a> 
+alias -g P='~/OneDrive/HochschuleAA/Allgemein/Planung'
 
-alias cdZ='cd ~/Zeiss'
+alias -g Au='~/OneDrive/HochschuleAA/bachelor-2/WS21/AuD2'
 
-alias cdO='cd ~/Documents/Odin'
+alias -g Z='~/Zeiss'
 
-alias cdC='cd ~/current-course'
+alias -g O='~/Documents/Odin'
 
-alias cdD='cd ~/Downloads'
+alias -g C='~/current-course'
+
+alias -g D='~/Downloads'
 
 ################
 ## appearance ##
