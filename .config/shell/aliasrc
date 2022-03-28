@@ -1,0 +1,57 @@
+#!/bin/sh
+
+# sudo not required for some system commands
+for command in reboot ; do
+	alias $command="sudo $command"
+done; unset command
+
+################
+##  aliases   ##
+################
+
+alias cat='/bin/bat'
+
+# add alias for dotfiles repo
+alias config='/usr/bin/git --git-dir=/home/jakob/.cfg/ --work-tree=/home/jakob'
+
+# add alias for nvim 
+alias vi='/usr/bin/nvim'
+
+# alias for zathura, opening it always as a new process
+alias \
+	zathura='zathura --fork' \
+	z='zathura --fork' \
+
+# copy current path
+alias y.='xclip -selection c <<< $(pwd)'
+
+# start using lecture rofi script
+alias lectureRofi='python /usr/local/bin/university-setup-master/scripts/rofi-lectures.py'
+
+# open url of current course
+alias oUrl='yq .url ~/current-course/info.yaml | xargs firefox&'
+
+# aliases for changing directories
+# with global flag, to expand with <Ctrl+x a> 
+alias -g \
+	.C='~/.config' \
+	P='~/OneDrive/HochschuleAA/Allgemein/Planung' \
+	Au='~/OneDrive/HochschuleAA/bachelor-2/WS21/AuD2' \
+	Z='~/Zeiss' \
+	O='~/Documents/Odin' \
+	C='~/current-course' \
+	D='~/Downloads' \
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -vI" \
+	mkd="mkdir -pv" \
+
+# Colorize commands when possible.
+alias \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ip="ip -color=auto"

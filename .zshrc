@@ -5,9 +5,25 @@ setopt autocd
 # set vi mode
 bindkey -v
 
+# source profile # NOT HOW PROFILE WORKS
+# should load in at startup when located in $HOME
+source ~/.config/shell/profile
+
+# source alias file
+source ~/.config/shell/aliasrc
+
 # source keybindings
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+
+#determines search program for fzf
+if type ag &> /dev/null; then
+    export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
+fi
+#refer rg over ag
+if type rg &> /dev/null; then
+    export FZF_DEFAULT_COMMAND='rg --files --hidden'
+fi
 
 export EDITOR=nvim
 # set default pager to nvimpager
@@ -16,50 +32,43 @@ export PAGER=nvimpager
 # add src folder to path 
 # the $PATH: at the beginning signifies that home/jakob.. should be appended to 
 # the end of the PATH.
+PATH=/home/jakob/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/home/jakob/.dotnet/tools:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/jakob/.local/bin/
+
+source /usr/share/nvm/init-nvm.sh
 
 ################
-##  aliases   ##
+## functions  ##
 ################
 
-alias cat='/bin/bat'
+# change cursor shape for different vi modes
+function zle-keymap-select () {
+    case $KEYMAP in
+        vicmd) echo -ne '\e[1 q';;      # block
+        viins|main) echo -ne '\e[5 q';; # beam
+    esac
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-# add alias for dotfiles repo
-alias config='/usr/bin/git --git-dir=/home/jakob/.cfg/ --work-tree=/home/jakob'
+# fuzzy find scripts and open them in editor
+es() { du -a ~/.config/* /usr/local/bin/* ~/.zshrc | awk {'print $2'} | fzf | xargs -r $EDITOR ;}
 
-# add alias for nvim 
-alias vi='/usr/bin/nvim'
+# fuzzy find any file in $HOME and open in editor
+ef() { du -a $HOME 2>/dev/null | awk {'print $2'} | fzf | xargs -r $EDITOR ;}
 
-# alias for zathura, opening it always as a new process
-alias zathura='zathura --fork'
-
-# copy current path
-alias y.='xclip -selection c <<< $(pwd)'
-
-# start using lecture rofi script
-alias lectureRofi='python /usr/local/bin/university-setup-master/scripts/rofi-lectures.py'
-
-# open url of current course
-alias oUrl='yq .url ~/current-course/info.yaml | xargs firefox&'
-
-# aliases for changing directories
-# with global flag, to expand with <Ctrl+x a> 
-alias -g P='~/OneDrive/HochschuleAA/Allgemein/Planung'
-
-alias -g Au='~/OneDrive/HochschuleAA/bachelor-2/WS21/AuD2'
-
-alias -g Z='~/Zeiss'
-
-alias -g O='~/Documents/Odin'
-
-alias -g C='~/current-course'
-
-alias -g D='~/Downloads'
+# change to any directory in $HOME
+cD() { cd $(du $HOME 2>/dev/null | awk {'print $2'} | fzf) ;} 
 
 ################
 ## appearance ##
 ################
 
-source /usr/share/nvm/init-nvm.sh
 alias ls='ls --color=auto'
 alias ll='ls -l'
 
@@ -71,16 +80,14 @@ PS1="%{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[cyan]%}%1~%{$reset_color%} %% "
 
 export PROMPT='%F{111}%m:%F{2}%~ $%f '
 
-PATH=/home/jakob/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/home/jakob/.dotnet/tools:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/jakob/.local/bin/
-
 ################
 ##   history  ##
 ################
 
 # set history size
-export HISTSIZE=10000
+export HISTSIZE=1000000
 # save history after logout
-export SAVEHIST=10000
+export SAVEHIST=1000000
 # history file
 export HISTFILE=~/.zhistory
 # #append into history file
