@@ -3,10 +3,6 @@ call plug#begin()
 " Neovim (Linux): stdpath('data') . '/plugged'
 
 Plug 'neovim/nvim-lspconfig'
-Plug 'vimwiki/vimwiki'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'michal-h21/vim-zettel'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -15,6 +11,11 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-surround'
+Plug 'vimwiki/vimwiki'
+Plug 'michal-h21/vim-zettel'
 Plug 'puremourning/vimspector'
 Plug 'morhetz/gruvbox'
 
@@ -72,20 +73,6 @@ nnoremap <leader>cd :lcd %:p:h<cr> :pwd<cr>
 
 " delete buffer while retaining the split pane
 command Bd bp\|bd \#
-
-" surround
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O 
-
-" when typing closing bracket do not write again if it's already there.
-inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
 
 highlight CursorLineNr guibg=#1d2021
 set cursorline
