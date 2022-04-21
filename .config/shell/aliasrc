@@ -34,6 +34,12 @@ alias lectureRofi='python /usr/local/bin/university-setup-master/scripts/rofi-le
 # open url of current course
 alias oUrl='yq .url ~/current-course/info.yaml | xargs firefox&'
 
+alias cd..="cd .."
+alias cd...="cd ../.."
+alias cd....="cd ../../.."
+alias cd.....="cd ../../../.."
+alias cd......="cd ../../../../.."
+
 # aliases for changing directories
 # with global flag, to expand with <Ctrl+x a> 
 alias -g \
