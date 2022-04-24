@@ -16,13 +16,13 @@ source ~/.config/shell/aliasrc
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
-#determines search program for fzf
+# determines search program for fzf
 if type ag &> /dev/null; then
-    export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
+    export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g "" --hidden'
 fi
-#refer rg over ag
+# prefer rg over ag
 if type rg &> /dev/null; then
-    export FZF_DEFAULT_COMMAND='rg --files --hidden'
+    export FZF_DEFAULT_COMMAND='rg -p ~/.gitignore --files --hidden'
 fi
 
 export EDITOR=nvim

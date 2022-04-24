@@ -60,7 +60,7 @@ bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -269,9 +269,9 @@ set $zeiss-workspace [z]eiss [s]ingleToMulti [t]emplateApp [e]dge [m]qtt-explore
 bindsym $mod+o mode "$zeiss-workspace"
 
 mode "$zeiss-workspace" {
-	bindsym z exec alacritty --working-directory ~/Zeiss/
-	bindsym t exec alacritty --working-directory ~/Zeiss/scaleit-app-template/DomainSoftware
-	bindsym s exec alacritty --working-directory ~/Zeiss/singleToMulti/
+	bindsym z exec kitty --working-directory ~/Zeiss/
+	bindsym t exec kitty --working-directory ~/Zeiss/scaleit-app-template/DomainSoftware
+	bindsym s exec kitty --working-directory ~/Zeiss/singleToMulti/
 	
 	bindsym m exec mqtt-explorer
 	bindsym e exec microsoft-edge-dev

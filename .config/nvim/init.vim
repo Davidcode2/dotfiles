@@ -67,6 +67,9 @@ inoremap jh <Esc>
 nnoremap ö :
 vnoremap ö :
 nnoremap <C-s> :Ag<cr>
+nnoremap <C-h> :Files ~/<cr>
+" vnoremap < <gv
+" vnoremap > >gv
 
 " map change dir command
 nnoremap <leader>cd :lcd %:p:h<cr> :pwd<cr>
