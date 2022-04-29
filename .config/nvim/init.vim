@@ -18,6 +18,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'michal-h21/vim-zettel'
 Plug 'puremourning/vimspector'
 Plug 'morhetz/gruvbox'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Initialize plugin system
 call plug#end()
@@ -29,6 +30,7 @@ syntax on
 source $HOME/.config/nvim/vimwiki.vim
 source $HOME/.config/nvim/lsp.lua
 source $HOME/.config/nvim/vimspector.vim
+source $HOME/.config/nvim/treesitter.lua
 
 " netrw-gx
 " let g:netrw_browsex_viewer = "xdg-open"
@@ -49,9 +51,11 @@ autocmd BufLeave * set norelativenumber
 " show line at width
 set colorcolumn=80
 
+" set a single statusline
+set laststatus=3
+
 " automatically change to notes dir when in notes
 autocmd BufEnter * if expand("%:p:h") =~# '**/notes$' | lcd %:p:h | endif
-
 " automatically change to current location when in courses folder
 autocmd BufEnter * if expand("%:p:h:h") =~# '**/WS\d\d$\|**/SS\d\d$' | lcd %:p:h | endif
 
@@ -77,10 +81,12 @@ nnoremap <leader>cd :lcd %:p:h<cr> :pwd<cr>
 " delete buffer while retaining the split pane
 command Bd bp\|bd \#
 
+" cursorline optics
 highlight CursorLineNr guibg=#1d2021
 set cursorline
 set cursorlineopt=number
 
+" tabwidth
 autocmd Filetype css setlocal tabstop=2
 set tabstop=2
 set shiftwidth=2
