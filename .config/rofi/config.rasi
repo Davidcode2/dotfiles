@@ -1,5 +1,6 @@
 configuration {
-/*	modi: "window,run,ssh";*/
+	modi: "window,run,ssh";
+	terminal: "kitty";
 /*	font: "mono 12";*/
 /*	location: 0;*/
 /*	yoffset: 0;*/
@@ -145,4 +146,11 @@ configuration {
       sorting-method:    "name";
   }
 }
-@theme "gruvbox-dark-hard"
+
+@theme "center"
+
+window {
+  width:		650px;
+  border-radius:	10px;
+  border: 12px;
+}
