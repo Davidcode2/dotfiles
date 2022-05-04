@@ -7,6 +7,7 @@
 #
 # sync_dir = "~/OneDrive"
 # skip_file = "~*|.~*|*.tmp"
+skip_file = "*.ova"
 # monitor_interval = "300"
 skip_dir = "Blender"
 skip_dir = "Games"
