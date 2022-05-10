@@ -8,6 +8,8 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+Plug 'onsails/lspkind.nvim'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
@@ -31,6 +33,7 @@ source $HOME/.config/nvim/vimwiki.vim
 source $HOME/.config/nvim/lsp.lua
 source $HOME/.config/nvim/vimspector.vim
 source $HOME/.config/nvim/treesitter.lua
+source $HOME/.config/nvim/tabnine.lua
 
 " netrw-gx
 " let g:netrw_browsex_viewer = "xdg-open"
