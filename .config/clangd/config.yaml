@@ -1,0 +1,8 @@
+CompileFlags:
+  # Treat code as C++, use C++20 standard, enable more warnings.
+  Add: [-xc++, -std=c++2a, -Wall, -Wno-missing-prototypes, -Weffc++]
+Diagnostics:
+  # Tweak Clang-Tidy checks.
+  ClangTidy:
+    Add: [performance*, modernize*, readability*]
+    Remove: [modernize-use-trailing-return-type]
