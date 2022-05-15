@@ -9,16 +9,15 @@
 	
 	width: 30%;
 	y-offset: 20%;
+	transparency: "real";
 
 	/* Make the window show up at the bottom of the screen */
 	location:	north;
 	anchor:		north;
 
 	text-color: @foreground;
-	background-color: @background-t;
-}
-
-/* Configure the layout for the main box interactions */
+	background-color: #26323800; /* the 00 at the end is for transparency */
+} /* Configure the layout for the main box interactions */
 #mainbox {
 	children: [ message, bottom-bar, listview ];
 	spacing: 0px;

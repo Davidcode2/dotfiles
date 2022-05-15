@@ -6,7 +6,7 @@
 * {
 	trans:			#00000000;
 
-	background: #2c2e34ff;
+	background: rgb(255,255,255,0.1);
 	foreground: #c5cdd9ff;
 
 	black: #3e4249ff;
@@ -26,9 +26,10 @@
 	magentaBri: #d38aeaff;
 	cyanBri: #5dbbc1ff;
 	whiteBri: #c5cdd9ff;
+	offwhite-t: #3e4249CC;
 
-	// foreground:		@black;
-	// background:		@offwhite-t;
+// foreground:		@black;
+	background:		@offwhite-t;
 	background-t:	@blackBri;
 	
 	primary:		@magenta;
