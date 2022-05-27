@@ -32,7 +32,7 @@ export PAGER=nvimpager
 # add src folder to path 
 # the $PATH: at the beginning signifies that home/jakob.. should be appended to 
 # the end of the PATH.
-PATH=/home/jakob/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/home/jakob/.dotnet/tools:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/jakob/.local/bin/
+PATH=/home/jakob/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/home/jakob/.dotnet/tools:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/jakob/.local/bin/:/usr/bin/ltex-ls-15.2.0-linux-x64/ltex-ls-15.2.0/bin
 
 source /usr/share/nvm/init-nvm.sh
 
@@ -96,3 +96,5 @@ setopt INC_APPEND_HISTORY
 #setopt HIST_IGNORE_DUPS
 # save only one command if 2 common are same and consistent
 setopt HIST_IGNORE_ALL_DUPS
+# do not save commands in history that start with a space
+setopt HIST_IGNORE_SPACE

@@ -56,6 +56,9 @@ alias -g \
 	D='~/Downloads' \
 	N='~/OneDrive/notes/'\
 
+# notes
+alias notes='nvim ~/OneDrive/notes/index.md'
+
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	cp="cp -iv" \
