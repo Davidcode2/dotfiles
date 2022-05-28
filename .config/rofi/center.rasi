@@ -18,9 +18,37 @@
 	text-color: @foreground;
 	background-color: #26323800; /* the 00 at the end is for transparency */
 } /* Configure the layout for the main box interactions */
+
+#scrollbar {
+		background-color: #43484f;
+		margin: 0px 5px;
+		handle-color: @foreground;
+		handle-width: 1px;
+		border-color: pink;
+}
+
+#scrollbar.handle {
+	border: 1px;
+	color: white;
+	padding: 1px;
+	border-radius: 3px;
+}
+
 #mainbox {
-	children: [ message, bottom-bar, listview ];
+	children: [ bottom-bar, message, listview ];
 	spacing: 0px;
+}
+
+#message {
+	background-image: @background-t;
+	padding: 0.5em 1em;
+	margin: 0px;
+}
+
+#textbox {
+	font: @font-md;
+	size: 10px;
+	color: #43484f;
 }
 
 /**
@@ -32,12 +60,9 @@
 	orientation: vertical;
 	expand: false;
 	children: [ inputbar];
-
 	background-color: @background;
 	padding: 2em 1em 3em 1em;
 	background-image: linear-gradient(#ff8a00, #e52e71);
-
-	// border-radius: 7;
 }
 
 
@@ -69,8 +94,8 @@
 
 #listview {
 	background-color: @background;
-
 	reverse: false;
+	scrollbar: true;
 	lines: 7;
 	dynamic: true;
 	spacing: 0.3em;
@@ -78,23 +103,10 @@
 	padding: 1em 0 1em 0;
 }
 
-#scrollbar {
-    width:        4px ;
-    border:       0;
-    padding:      0;
-}
-
-#scrollbar.handle {
-	border: 1px;
-	border-radius: 3px;
-}
-
 #element {
-	//margin: 0 5.5em 0em 1em;
-	margin: 0 2em;
+	margin: 0 5.5em 0em 1em;
 	cursor: pointer;
 	spacing: 1em;
-	// orientation: vertical;
 }
 
 #element-text {
