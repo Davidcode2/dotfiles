@@ -9,6 +9,9 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# wallpaper
+set $wallpaper /home/jakob/Pictures/wallhaven-dgvzvl.jpg
+
 set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -41,6 +44,9 @@ exec --no-startup-id redshift -l 48.52266:9.05222
 
 # start polybar on startup
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# wallpaper
+exec_always feh --bg-scale --no-xinerama $wallpaper
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -207,11 +213,8 @@ bindsym $mod+r mode "resize"
 # enable gaps
 # inner for the margin between the border and the content of a window
 # outer for the margin between the window and the screens edges / other windows
-#gaps inner 2
-#gaps outer 2
-
-# wallpaper
-exec --no-startup-id nitrogen --restore
+gaps inner 8
+gaps outer 2
 
 # remove top bar
 new_window 1pixel # uncomment to remove top bar
