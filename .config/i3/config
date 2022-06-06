@@ -213,8 +213,8 @@ bindsym $mod+r mode "resize"
 # enable gaps
 # inner for the margin between the border and the content of a window
 # outer for the margin between the window and the screens edges / other windows
-gaps inner 8
-gaps outer 2
+# gaps inner 8
+# gaps outer 2
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
