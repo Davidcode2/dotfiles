@@ -42,6 +42,8 @@ exec --no-startup-id nm-applet
 
 exec --no-startup-id redshift -l 48.52266:9.05222
 
+exec_always --no-startup-id /usr/bin/light-locker
+
 # start polybar on startup
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
