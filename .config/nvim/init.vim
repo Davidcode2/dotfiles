@@ -30,6 +30,7 @@ syntax on
 
 source $HOME/.config/nvim/vimwiki.vim
 source $HOME/.config/nvim/lsp.lua
+source $HOME/.config/nvim/sumneko_lua.lua
 source $HOME/.config/nvim/lsp-config.lua
 source $HOME/.config/nvim/vimspector.vim
 source $HOME/.config/nvim/treesitter.lua
@@ -92,6 +93,8 @@ funct! GallFunction(re)
   cw  
 endfunct
 command! -nargs=1 Gall call GallFunction(<q-args>)
+
+nnoremap <leader>rp :lua require"adjustPath".getStringUnderCursor()<CR>
 
 " delete buffer while retaining the split pane
 command Bd bp\|bd \#

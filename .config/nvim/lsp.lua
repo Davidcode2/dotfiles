@@ -2,7 +2,7 @@ require("luasnip.loaders.from_vscode").load()
 
 -- enable nvim to work with language servers
 -- add additional language servers in here:
-local servers = { 'clangd', 'pyright', 'tsserver', 'angularls', 'sqlls', 'cssls', 'html', 'emmet_ls'}
+local servers = { 'clangd', 'pyright', 'tsserver', 'angularls', 'sqlls', 'cssls', 'html', 'emmet_ls', 'sumneko_lua'}
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
