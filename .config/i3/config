@@ -48,7 +48,8 @@ exec_always --no-startup-id /usr/bin/light-locker
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # wallpaper
-exec_always feh --bg-scale --no-xinerama $wallpaper
+# exec_always feh --bg-scale --no-xinerama $wallpaper
+exec sh ~/.fehbg &
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -374,11 +375,15 @@ assign [class="Inkscape"] $ws5
 # make urxvt always floating (for inkscape input)
 for_window [class="URxvt"] floating enable
 
-# take a screenshot of a screen region and copy it to a clipboard
+# take a screenshot of a screen region and copy it to a clipboard and save to screenshots dir
 bindsym --release Shift+Print exec "/usr/local/bin/screencapture -s /home/jakob/Pictures/Screenshots/"
+# take a screenshot of a screen region and copy it to a clipboard and save to notes dir
+bindsym --release Control+Shift+Print exec "/usr/local/bin/screencapture -s /home/jakob/OneDrive/notes/JoplinNotesMarkdown/_resources/"
 
-# take a screenshot of a whole window and copy it to a clipboard
+# take a screenshot of a whole window and copy it to a clipboard and save to screenshots dir
 bindsym --release Print exec "/usr/local/bin/screencapture /home/jakob/Pictures/Screenshots/"
+# take a screenshot of a whole window and copy it to a clipboard and save to notes dir
+bindsym --release Control+Print exec "/usr/local/bin/screencapture /home/jakob/OneDrive/notes/JoplinNotesMarkdown/_resources/"
 
 # keybinding for starting polydoro timer
 bindsym $mod+t exec --no-startup-id python ~/.config/polybar/polydoro/polydoro.py
