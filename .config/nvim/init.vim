@@ -51,7 +51,10 @@ set number
 autocmd BufEnter * set relativenumber
 autocmd BufLeave * set norelativenumber
 " show line at width
-set colorcolumn=80
+" set colorcolumn=80
+" put a mark where a line extends over 80 characters
+highlight ColorColumn ctermbg=lightgrey
+call matchadd('ColorColumn', '\%81v', 100)
 
 " set a single statusline
 set laststatus=3
@@ -80,6 +83,16 @@ nnoremap <C-h> :Files ~/<cr>
 " map change dir command
 nnoremap <leader>cd :lcd %:p:h<cr> :pwd<cr>
 
+" search across current directory and open quickfix window with results 
+" taken from here:
+" https://stackoverflow.com/questions/2190844/how-to-search-across-a-directory-of-files-in-vim
+funct! GallFunction(re)
+  cexpr []
+  execute 'silent! noautocmd bufdo vimgrepadd /' . a:re . '/j %'
+  cw  
+endfunct
+command! -nargs=1 Gall call GallFunction(<q-args>)
+
 " delete buffer while retaining the split pane
 command Bd bp\|bd \#
 
@@ -92,3 +105,5 @@ set cursorlineopt=number
 autocmd Filetype css setlocal tabstop=2
 set tabstop=2
 set shiftwidth=2
+" turn tabs to spaces
+set expandtab

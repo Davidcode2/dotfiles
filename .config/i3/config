@@ -212,6 +212,9 @@ bindsym $mod+r mode "resize"
 ############# Customization ##############
 ##########################################
 
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show 
+
 # enable gaps
 # inner for the margin between the border and the content of a window
 # outer for the margin between the window and the screens edges / other windows
