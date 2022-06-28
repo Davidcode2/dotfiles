@@ -20,6 +20,7 @@ Plug 'michal-h21/vim-zettel'
 Plug 'puremourning/vimspector'
 Plug 'morhetz/gruvbox'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug '~/.config/nvim/screenshotPathPlugin/'
 
 " Initialize plugin system
 call plug#end()
@@ -93,8 +94,6 @@ funct! GallFunction(re)
   cw  
 endfunct
 command! -nargs=1 Gall call GallFunction(<q-args>)
-
-nnoremap <leader>rp :lua require"adjustPath".getStringUnderCursor()<CR>
 
 " delete buffer while retaining the split pane
 command Bd bp\|bd \#
