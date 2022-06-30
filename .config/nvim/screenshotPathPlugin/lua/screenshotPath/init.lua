@@ -1,3 +1,5 @@
+local notesFolderName = "notes"
+
 local function getStringUnderCursor()
   local file = vim.fn.expand("%:p")
   local stringUnderCursor = vim.fn.getline(vim.fn.line("."))
@@ -8,17 +10,7 @@ local function stringIsPath(stringUnderCursor)
   return string.find(stringUnderCursor, '[%w_-/]') ~= nil
 end
 
-local function checkIfStringUnderCurosrIsPath()
-  local string = getStringUnderCursor()
-  if stringIsPath(string) then
-    return true
-  end
-  print("string under cursor is not a path")
-  return false
-end
-
 local function getParentPathToCurrentFile()
-  --print(vim.inspect(vim.fn.cursor(vim.api.nvim_win_get_cursor)))
   local pathToCurrentFile = vim.fn.expand("%:p:h")
   return pathToCurrentFile
 end
@@ -52,8 +44,6 @@ local function pathStringIsAmongDirectories(pathString, directories)
   return false
 end
 
-local M = {}
-
 local function getAmountOfLevelsToTargetDir(substringFromEndOfTarget)
   local countLevelsAfterTargetDir = 0
   for match in string.gmatch(substringFromEndOfTarget, '/') do
@@ -62,28 +52,56 @@ local function getAmountOfLevelsToTargetDir(substringFromEndOfTarget)
   return countLevelsAfterTargetDir
 end
 
-function M.adjustPath()
-  if not checkIfStringUnderCurosrIsPath() then return end
-  local parentPathToCurrentFile = getParentPathToCurrentFile()
-  local directoriesInCurrentDir = getDirectories(parentPathToCurrentFile)
-  if pathStringIsAmongDirectories(stringUnderCursor,directoriesInCurrentDir) then
-    print("found joplin dir")
-    return true
-  end
-  local startOfWord, endOfTargetDirName = string.find(parentPathToCurrentFile, "JoplinNotesMarkdown")
-  local substringFromEndOfTarget = string.sub(parentPathToCurrentFile, 47)
+local function getEndOfParentDirStringPosition(parentPathToCurrentFile)
+  local notesFolderNameWithTrailingSlash = notesFolderName .. "/"
+  local startOfWord, endOfTargetDirName = string.find(parentPathToCurrentFile, notesFolderNameWithTrailingSlash .."%w*/")
+  return endOfTargetDirName
+end
+
+local function getDirUpPrefix(substringFromEndOfTarget)
   local dirUpPrefix = ""
   local countLevelsAfterTargetDir = getAmountOfLevelsToTargetDir(substringFromEndOfTarget)
   for i = 1, countLevelsAfterTargetDir+1 do
     dirUpPrefix = "../" .. dirUpPrefix
   end
-  local currentRow = vim.api.nvim_win_get_cursor(0)[1]
+  return dirUpPrefix
+end
+
+local function makeUpDirectoryPrefix(parentPathToCurrentFile)
+  local endOfTargetDirNamePos = getEndOfParentDirStringPosition(parentPathToCurrentFile)
+  if not endOfTargetDirNamePos then return false end
+  local substringFromEndOfTarget = string.sub(parentPathToCurrentFile, endOfTargetDirNamePos)
+  if not substringFromEndOfTarget then return false end
   local pathUpPrefixTable = {}
+  local dirUpPrefix = getDirUpPrefix(substringFromEndOfTarget)
   table.insert(pathUpPrefixTable, dirUpPrefix)
+  return pathUpPrefixTable
+end
+
+local function prependPrefixToCurrentLine(pathUpPrefixTable)
+  local currentRow = vim.api.nvim_win_get_cursor(0)[1]
   vim.api.nvim_buf_set_text(0, currentRow-1,0, currentRow-1,0, pathUpPrefixTable)
+end
+
+local M = {}
+
+function M.adjustPath()
+  local stringUnderCursor = getStringUnderCursor()
+  if not stringIsPath(stringUnderCursor) then return end
+  local pathToParentDirOfCurrentFile = getParentPathToCurrentFile()
+  local directoriesInCurrentDir = getDirectories(pathToParentDirOfCurrentFile)
+  if pathStringIsAmongDirectories(stringUnderCursor,directoriesInCurrentDir) then
+    print("found resources root dir")
+    return true
+  end
+  local pathUpPrefixTable = makeUpDirectoryPrefix(pathToParentDirOfCurrentFile)
+  if not pathUpPrefixTable then
+    print("path doesn't contain 'notes'")
+    return end
+  prependPrefixToCurrentLine(pathUpPrefixTable)
   -- automatically do this when pasting from primary selection (add listener)
-  -- print new string into vim buffer
-  -- refactor to take stuff out of this function into smaller ones
+  -- auto change dir (do this in general, not concerning this plugin)
+  -- add ![]()
 end
 
 return M
