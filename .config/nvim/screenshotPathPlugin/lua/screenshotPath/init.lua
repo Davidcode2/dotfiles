@@ -1,7 +1,6 @@
 local notesFolderName = "notes"
 
 local function getStringUnderCursor()
-  local file = vim.fn.expand("%:p")
   local stringUnderCursor = vim.fn.getline(vim.fn.line("."))
   return stringUnderCursor
 end
@@ -69,9 +68,13 @@ end
 
 local function makeUpDirectoryPrefix(parentPathToCurrentFile)
   local endOfTargetDirNamePos = getEndOfParentDirStringPosition(parentPathToCurrentFile)
-  if not endOfTargetDirNamePos then return false end
+  if not endOfTargetDirNamePos then
+    return false
+  end
   local substringFromEndOfTarget = string.sub(parentPathToCurrentFile, endOfTargetDirNamePos)
-  if not substringFromEndOfTarget then return false end
+  if not substringFromEndOfTarget then
+    return false
+  end
   local pathUpPrefixTable = {}
   local dirUpPrefix = getDirUpPrefix(substringFromEndOfTarget)
   table.insert(pathUpPrefixTable, dirUpPrefix)
@@ -83,25 +86,53 @@ local function prependPrefixToCurrentLine(pathUpPrefixTable)
   vim.api.nvim_buf_set_text(0, currentRow-1,0, currentRow-1,0, pathUpPrefixTable)
 end
 
-local M = {}
+local function containsResourcesPath(string)
+  if string.find(string, "_resources") then
+    return true
+  end
+  return false
+end
 
-function M.adjustPath()
+local function checkPath(string)
+  if stringIsPath(string) and containsResourcesPath(string) then
+    return true
+  end
+  return false
+end
+
+local function addMarkdownImageBraces()
+  local currentRow = vim.api.nvim_win_get_cursor(0)[1]
+  local lastColumn = vim.api.nvim_win_get_cursor(0)[2]
+  vim.api.nvim_buf_set_text(0, currentRow-1, 0, currentRow-1,0,{"![screenshot]("})
+  local lineArray = vim.api.nvim_buf_get_lines(0, currentRow-1, currentRow, true)
+  local lineLength = string.len(lineArray[1])
+  vim.api.nvim_buf_set_text(0, currentRow-1, lineLength, currentRow-1,lineLength,{")"})
+end
+
+
+local RelativePath = {}
+
+function RelativePath.makeRelative()
   local stringUnderCursor = getStringUnderCursor()
-  if not stringIsPath(stringUnderCursor) then return end
   local pathToParentDirOfCurrentFile = getParentPathToCurrentFile()
-  local directoriesInCurrentDir = getDirectories(pathToParentDirOfCurrentFile)
-  if pathStringIsAmongDirectories(stringUnderCursor,directoriesInCurrentDir) then
+  local pathUpPrefixTable = makeUpDirectoryPrefix(pathToParentDirOfCurrentFile)
+  if not checkPath(stringUnderCursor) then
+    print("wrong format")
+    return
+  end
+  if pathStringIsAmongDirectories(stringUnderCursor,getDirectories(pathToParentDirOfCurrentFile)) then
     print("found resources root dir")
     return true
   end
-  local pathUpPrefixTable = makeUpDirectoryPrefix(pathToParentDirOfCurrentFile)
   if not pathUpPrefixTable then
     print("path doesn't contain 'notes'")
-    return end
+    return
+  end
   prependPrefixToCurrentLine(pathUpPrefixTable)
-  -- automatically do this when pasting from primary selection (add listener)
-  -- auto change dir (do this in general, not concerning this plugin)
-  -- add ![]()
+  addMarkdownImageBraces()
+  -- TODO: automatically do this when pasting from primary selection (add listener)
+  -- TODO: auto change dir (do this in general, not concerning this plugin)
+  -- TODO: add ![]()
 end
 
-return M
+return RelativePath

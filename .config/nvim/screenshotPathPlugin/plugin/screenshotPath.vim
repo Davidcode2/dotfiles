@@ -1,6 +1,5 @@
 " Title:        screenshot path Plugin
-" Description:  A plugin to provide an example for creating Neovim plugins.
-" Last Change:  8 November 2021
+" Description:  Take path under cursor and make it relative to resources folder
 " Maintainer:   Jakob Lingel
 
 " Prevents the plugin from being loaded multiple times. If the loaded
@@ -12,4 +11,4 @@ endif
 let g:loaded_exampleplugin = 1
 
 " Exposes the plugin's functions for use as commands in Neovim.
-command! -nargs=0 AdjustPath lua require("screenshotPath").adjustPath()
+command! -nargs=0 AdjustPath lua require("screenshotPath").makeRelative()
