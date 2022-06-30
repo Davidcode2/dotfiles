@@ -219,7 +219,8 @@ bindsym $mod+minus scratchpad show
 # enable gaps
 # inner for the margin between the border and the content of a window
 # outer for the margin between the window and the screens edges / other windows
-gaps inner 8
+# adjust padding-bottom in polybar for spacing between bar and windows
+gaps inner 5
 gaps outer 2
 
 set $mode_gaps Gaps: (o) outer, (i) inner
