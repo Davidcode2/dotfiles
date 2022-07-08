@@ -49,7 +49,6 @@ function zle-keymap-select () {
 }
 zle -N zle-keymap-select
 zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
     echo -ne "\e[5 q"
 }
 zle -N zle-line-init
@@ -64,6 +63,12 @@ ef() { du -a $HOME 2>/dev/null | awk {'print $2'} | fzf | xargs -r $EDITOR ;}
 
 # change to any directory in $HOME
 cD() { cd $(du $HOME 2>/dev/null | awk {'print $2'} | fzf) ;} 
+
+# search through pdfs
+pdfsearch() {
+  contextParam=${3:-0}
+  find $1 -name '*.pdf' -exec sh -c 'pdftotext "{}" - | grep --with-filename --label="{}" --color -C'$contextParam' "'$2'"' \;
+}
 
 ################
 ## appearance ##
