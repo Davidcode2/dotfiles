@@ -62,6 +62,7 @@ alias notes='nvim ~/OneDrive/notes/index.md'
 # todo
 alias todo='nvim ~/OneDrive/notes/todo.md'
 
+# taken from luke smith
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	cp="cp -iv" \

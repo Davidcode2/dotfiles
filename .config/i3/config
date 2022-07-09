@@ -213,8 +213,8 @@ bindsym $mod+r mode "resize"
 ############# Customization ##############
 ##########################################
 
-exec_always kitty --title scratchpad nvim -p ~/OneDrive/notes/index.md ~/OneDrive/notes/todo.md
-for_window [instance="kitty" title="scratchpad"] move to scratchpad
+exec_always alacritty --title scratchpad -e nvim -p ~/OneDrive/notes/index.md ~/OneDrive/notes/todo.md
+for_window [instance="Alacritty" title="scratchpad"] move to scratchpad
 
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show 
