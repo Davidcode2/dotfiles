@@ -40,6 +40,11 @@ source /usr/share/nvm/init-nvm.sh
 ## functions  ##
 ################
 
+# edit the current command in editor (Ctrl-v)
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd "^v" edit-command-line
+
 # change cursor shape for different vi modes
 function zle-keymap-select () {
     case $KEYMAP in
@@ -64,7 +69,7 @@ ef() { du -a $HOME 2>/dev/null | awk {'print $2'} | fzf | xargs -r $EDITOR ;}
 # change to any directory in $HOME
 cD() { cd $(du $HOME 2>/dev/null | awk {'print $2'} | fzf) ;} 
 
-# search through pdfs
+# search through pdfs with grep
 pdfsearch() {
   contextParam=${3:-0}
   find $1 -name '*.pdf' -exec sh -c 'pdftotext "{}" - | grep --with-filename --label="{}" --color -C'$contextParam' "'$2'"' \;
