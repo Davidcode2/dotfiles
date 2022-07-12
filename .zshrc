@@ -79,9 +79,6 @@ pdfsearch() {
 ## appearance ##
 ################
 
-alias ls='ls --color=auto'
-alias ll='ls -l'
-
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 

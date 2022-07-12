@@ -72,6 +72,7 @@ alias \
 
 # Colorize commands when possible.
 alias \
+  ll='ls -l'\
 	ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
