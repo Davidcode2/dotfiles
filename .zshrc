@@ -85,6 +85,13 @@ alias ll='ls -l'
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+RPROMPT=' ${vcs_info_msg_0_}'
+zstyle ':vcs_info:git:*' formats '%b'
+
 autoload -U colors && colors
 PS1="%{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[cyan]%}%1~%{$reset_color%} %% "
 
