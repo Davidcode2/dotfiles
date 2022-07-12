@@ -17,7 +17,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
 Plug 'michal-h21/vim-zettel'
-Plug 'puremourning/vimspector'
+Plug 'puremourning/vimspector', { 'on': 'VimspectorReset' }
 Plug 'morhetz/gruvbox'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug '~/.config/nvim/screenshotPathPlugin/'

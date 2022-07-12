@@ -107,9 +107,7 @@ local function addMarkdownImageBraces()
   local lineArray = vim.api.nvim_buf_get_lines(0, currentRow-1, currentRow, true)
   local lineLength = string.len(lineArray[1])
   vim.api.nvim_buf_set_text(0, currentRow-1, lineLength, currentRow-1,lineLength,{")"})
-  -- TODO: put cursor inside square brackets
 end
-
 
 local RelativePath = {}
 
@@ -123,7 +121,7 @@ function RelativePath.makeRelative()
   end
   if pathStringIsAmongDirectories(stringUnderCursor,getDirectories(pathToParentDirOfCurrentFile)) then
     print("found resources root dir")
-    return true
+    return
   end
   if not pathUpPrefixTable then
     print("path doesn't contain 'notes'")
@@ -131,11 +129,6 @@ function RelativePath.makeRelative()
   end
   prependPrefixToCurrentLine(pathUpPrefixTable)
   addMarkdownImageBraces()
-  -- TODO: automatically do this when pasting from primary selection (add listener)
-  -- <s>TODO: auto change dir (do this in general, not concerning this plugin)</s>
-  -- not a problem with markdown, since apparently it works with pressing enter on it anyway.
-  -- if needed one can always visually select the part of the path that's relative to the
-  -- current dir and do gx
 end
 
 return RelativePath
