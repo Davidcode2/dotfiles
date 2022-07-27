@@ -82,12 +82,21 @@ pdfsearch() {
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
+# Find and set branch name var if in git repository.
+function git_branch_name()
+{
+  branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+  if [[ $branch == "" ]];
+  then
+    :
+  else
+    echo '' $branch''
+  fi
+}
+# Enable substitution in the prompt.
 setopt prompt_subst
-RPROMPT=' ${vcs_info_msg_0_}'
-zstyle ':vcs_info:git:*' formats '%b'
+# set right prompt to show result of above function
+RPROMPT='$(git_branch_name)'
 
 autoload -U colors && colors
 PS1="%{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[cyan]%}%1~%{$reset_color%} %% "
