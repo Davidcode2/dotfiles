@@ -66,9 +66,6 @@ autocmd BufEnter * if expand("%:p:h") =~# '**/notes$' | lcd %:p:h | endif
 " automatically change to current location when in courses folder
 autocmd BufEnter * if expand("%:p:h:h") =~# '**/WS\d\d$\|**/SS\d\d$' | lcd %:p:h | endif
 
-" map ß to put <br> and then enter if in vimwiki file
-autocmd Filetype vimwiki inoremap <buffer> ß <br><cr>
-
 " keymapping
 " i is for input mode
 " n is for normal mode 

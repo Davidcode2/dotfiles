@@ -307,6 +307,7 @@ client.background       #ffffff
 #####################
 
 exec xset r rate 300 50
+exec_always xdotool mousemove 1350 760
 
 #####################
 ### lecture  flow ###
