@@ -37,9 +37,6 @@ source $HOME/.config/nvim/lsp-config.lua
 source $HOME/.config/nvim/vimspector.vim
 source $HOME/.config/nvim/treesitter.lua
 
-" netrw-gx
-" let g:netrw_browsex_viewer = "xdg-open"
-
 " permanent undo
 set undofile
 
