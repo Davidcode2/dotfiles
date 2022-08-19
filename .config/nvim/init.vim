@@ -15,6 +15,7 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
 Plug 'michal-h21/vim-zettel'
 Plug 'puremourning/vimspector', { 'on': 'VimspectorReset' }
