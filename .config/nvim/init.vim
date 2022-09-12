@@ -21,6 +21,7 @@ Plug 'michal-h21/vim-zettel'
 Plug 'puremourning/vimspector', { 'on': 'VimspectorReset' }
 Plug 'morhetz/gruvbox'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'ap/vim-css-color'
 Plug '~/.config/nvim/screenshotPathPlugin/'
 
 " Initialize plugin system
