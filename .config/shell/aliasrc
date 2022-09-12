@@ -26,6 +26,9 @@ alias \
 	zathura='zathura --fork' \
 	z='zathura --fork' \
 
+# open images scaled to fit viewport
+alias feh='feh -.'
+
 # copy current path
 alias y.='xclip -selection c <<< $(pwd)'
 
@@ -51,7 +54,7 @@ alias -g \
 	P='~/OneDrive/HochschuleAA/Allgemein/Planung' \
 	Au='~/OneDrive/HochschuleAA/bachelor-2/WS21/AuD2' \
 	Z='~/Zeiss' \
-	O='~/Documents/Odin' \
+	O='~/Documents/Code/Odin' \
 	C='~/current-course' \
 	D='~/Downloads' \
 	N='~/OneDrive/notes/'\
