@@ -1,4 +1,4 @@
--- require("luasnip.loaders.from_vscode").load()
+require("luasnip.loaders.from_vscode").load()
 
 -- enable nvim to work with language servers
 -- add additional language servers in here:
