@@ -90,18 +90,19 @@ function git_branch_name()
   then
     :
   else
-    echo '' $branch''
+    echo '' $branch ''
   fi
 }
+
 # Enable substitution in the prompt.
 setopt prompt_subst
-# set right prompt to show result of above function
-RPROMPT='$(git_branch_name)'
 
 autoload -U colors && colors
+# This is another way to set the prompt
 PS1="%{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[cyan]%}%1~%{$reset_color%} %% "
 
-export PROMPT='%F{111}%m:%F{2}%~ $%f '
+# this is the currently active prompt
+export PROMPT='%{$fg[cyan]%}$(git_branch_name)%F{111}%m:%F{2}%~ $%f '
 
 ################
 ##   history  ##
