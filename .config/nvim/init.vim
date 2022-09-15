@@ -22,6 +22,7 @@ Plug 'puremourning/vimspector', { 'on': 'VimspectorReset' }
 Plug 'morhetz/gruvbox'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ap/vim-css-color'
+Plug 'itchyny/vim-gitbranch'
 Plug '~/.config/nvim/screenshotPathPlugin/'
 
 " Initialize plugin system
@@ -37,6 +38,7 @@ source $HOME/.config/nvim/sumneko_lua.lua
 source $HOME/.config/nvim/lsp-config.lua
 source $HOME/.config/nvim/vimspector.vim
 source $HOME/.config/nvim/treesitter.lua
+source $HOME/.config/nvim/statusline.vim
 
 " permanent undo
 set undofile
@@ -56,9 +58,6 @@ autocmd BufLeave * set norelativenumber
 " put a mark where a line extends over 80 characters
 highlight ColorColumn ctermbg=lightgrey
 call matchadd('ColorColumn', '\%81v', 100)
-
-" set a single statusline
-set laststatus=3
 
 " automatically change to notes dir when in notes
 autocmd BufEnter * if expand("%:p:h") =~# '**/notes$' | lcd %:p:h | endif
@@ -105,3 +104,10 @@ set tabstop=2
 set shiftwidth=2
 " turn tabs to spaces
 set expandtab
+
+" colors 
+hi User1 guifg=#eea390 guibg=#363834
+hi User2 guifg=#ff86ff guibg=#363834
+hi User3 guifg=#ff98ff guibg=#363834
+hi User4 guifg=#a0ee67 guibg=#363834
+hi User5 guifg=#eeee73 guibg=#363834
