@@ -55,6 +55,7 @@ alias -g \
 	Au='~/OneDrive/HochschuleAA/bachelor-2/WS21/AuD2' \
 	Z='~/Zeiss' \
 	O='~/Documents/Code/Odin' \
+	E='~/Documents/Code/exercism/' \
 	C='~/current-course' \
 	D='~/Downloads' \
 	N='~/OneDrive/notes/'\

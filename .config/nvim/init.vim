@@ -19,10 +19,15 @@ Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
 Plug 'michal-h21/vim-zettel'
 Plug 'puremourning/vimspector', { 'on': 'VimspectorReset' }
-Plug 'morhetz/gruvbox'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ap/vim-css-color'
 Plug 'itchyny/vim-gitbranch'
+Plug 'morhetz/gruvbox'
+Plug 'franbach/miramare'
+Plug 'KeitaNakamura/neodark.vim'
+Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
+Plug 'ayu-theme/ayu-vim'
+Plug 'sainnhe/gruvbox-material'
 Plug '~/.config/nvim/screenshotPathPlugin/'
 
 " Initialize plugin system
@@ -46,7 +51,9 @@ set undofile
 " colorscheme
 set termguicolors
 let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
+let ayucolor="dark"
+let g:gruvbox_material_background='hard'
+colorscheme gruvbox-material
 
 " show line numbers
 set number

@@ -8,5 +8,5 @@ let g:zettel_options = [{"template" :  "~/.config/nvim/templates/zettelTemplate.
 let g:zettel_format = "%y%m%d-%H%M-%title"
 
 let g:markdown_fenced_languages = ['html', 'vim', 'python', 'css', 'typescript', 'javascript', 'c']
-let g:vimwiki_global_ext = 1
+let g:vimwiki_global_ext = 0
 
