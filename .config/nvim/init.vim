@@ -8,6 +8,8 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'nvim-lua/plenary.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
@@ -37,10 +39,12 @@ set nocompatible
 filetype plugin on
 syntax on
 
+source $HOME/.config/nvim/plenary.lua
 source $HOME/.config/nvim/vimwiki.vim
 source $HOME/.config/nvim/lsp.lua
 source $HOME/.config/nvim/sumneko_lua.lua
 source $HOME/.config/nvim/lsp-config.lua
+source $HOME/.config/nvim/null-ls.lua
 source $HOME/.config/nvim/vimspector.vim
 source $HOME/.config/nvim/treesitter.lua
 source $HOME/.config/nvim/statusline.vim
