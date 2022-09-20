@@ -81,3 +81,6 @@ alias \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ip="ip -color=auto"
+
+# delete long entries in history
+alias shortenHistory='cat ~/.zhistory | grep -vx ".\{253,500\}" > ~/.zhistory'
