@@ -23,6 +23,7 @@ Plug 'michal-h21/vim-zettel'
 Plug 'puremourning/vimspector', { 'on': 'VimspectorReset' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ap/vim-css-color'
+Plug 'uga-rosa/ccc.nvim', { 'branch': '0.7.2' }
 Plug 'itchyny/vim-gitbranch'
 Plug 'morhetz/gruvbox'
 Plug 'franbach/miramare'

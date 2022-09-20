@@ -17,6 +17,7 @@ null_ls.setup {
       extra_args = { "--single-quote" },
     },
     diagnostics.eslint_d,
+    formatting.eslint_d,
     code_actions.eslint_d
     -- diagnostics.flake8,
   },
