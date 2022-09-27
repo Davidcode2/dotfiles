@@ -7,7 +7,10 @@ bindkey -v
 
 # source profile # NOT HOW PROFILE WORKS
 # should load in at startup when located in $HOME
-source ~/.config/shell/profile
+# zsh uses .zprofile, but doesnt seem to work for me
+# check diagram on here:
+# https://unix.stackexchange.com/questions/320465/new-tmux-sessions-do-not-source-bashrc-file
+source ~/.zprofile
 
 # source alias file
 source ~/.config/shell/aliasrc
