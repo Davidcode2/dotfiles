@@ -10,7 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # wallpaper
-set $wallpaper /home/jakob/Pictures/wallhaven-o3dlkm.jpg
+set $wallpaper /home/jakob/Pictures/wallhaven-dgvzvl.jpg
 
 set $mod Mod1
 
@@ -213,8 +213,10 @@ bindsym $mod+r mode "resize"
 ############# Customization ##############
 ##########################################
 
-exec_always alacritty --title scratchpad -e nvim -p ~/OneDrive/notes/index.md ~/OneDrive/notes/todo.md
-for_window [instance="Alacritty" title="scratchpad"] move to scratchpad
+for_window [class="kitty" title="^scratchpad$"] move scratchpad
+
+for_window [class=alacritty instance="__text_scratchpad"] floating enable
+bindsym $mod+g exec text-scratchpad
 
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show 
@@ -263,8 +265,10 @@ mode "$mode_gaps_outer" {
 }
 
 # remove top bar
-default_border pixel 1
-default_floating_border pixel 1
+new_window 1pixel # uncomment to remove top bar
+
+# border size
+# default_border pixel 1
 
 # hide borders 
 hide_edge_borders smart
@@ -286,18 +290,13 @@ set $purple #b16286
 set $aqua #689d68
 set $gray #a89984
 set $darkgray #1d2021
-set $skyblue #2880ba
-set $white #fcfcfc
-set $darkburgundy #351616
-set $midnightblue #1d1b26
-set $beachturquoise #7dc1d8
 
 # class                 border  backgr. text    indicator child_border
-client.focused          $green $green $darkgray $purple $beachturquoise
+client.focused          $green $green $darkgray $purple #20b55b
 client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
 client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
 client.urgent           $red $red $white $red $red
-client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
 #####################
@@ -305,7 +304,6 @@ client.background       #ffffff
 #####################
 
 exec xset r rate 300 50
-exec_always xdotool mousemove 1350 760
 
 #####################
 ### lecture  flow ###
