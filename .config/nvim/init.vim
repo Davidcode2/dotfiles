@@ -49,6 +49,7 @@ source $HOME/.config/nvim/null-ls.lua
 source $HOME/.config/nvim/vimspector.vim
 source $HOME/.config/nvim/treesitter.lua
 source $HOME/.config/nvim/statusline.vim
+source $HOME/.config/nvim/keymaps.lua
 
 " permanent undo
 set undofile
@@ -75,22 +76,6 @@ call matchadd('ColorColumn', '\%81v', 100)
 autocmd BufEnter * if expand("%:p:h") =~# '**/notes$' | lcd %:p:h | endif
 " automatically change to current location when in courses folder
 autocmd BufEnter * if expand("%:p:h:h") =~# '**/WS\d\d$\|**/SS\d\d$' | lcd %:p:h | endif
-
-" keymapping
-" i is for input mode
-" n is for normal mode 
-" v is for visual mode
-inoremap jh <Esc>
-" inoremap ö ;
-nnoremap ö :
-vnoremap ö :
-nnoremap <C-s> :Ag<cr>
-nnoremap <C-h> :Files ~/<cr>
-" vnoremap < <gv
-" vnoremap > >gv
-
-" map change dir command
-nnoremap <leader>cd :lcd %:p:h<cr> :pwd<cr>
 
 " search across current directory and open quickfix window with results 
 " taken from here:
