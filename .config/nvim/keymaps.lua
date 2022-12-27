@@ -14,17 +14,17 @@ vim.g.mapleader = " "
 -- c is for command mode
 Map("i", "jh", "<Esc>")
 -- inoremap ö ;
-Map("n", "ö", ":")
-Map("v", "ö", ":")
+Map("n", "ö", ":", { silent = false })
+Map("v", "ö", ":", { silent = false })
 Map("n", "<C-s>", ":Ag<cr>")
 Map("n", "<leader>g", ":GFiles<cr>")
 Map("n", "<leader>f", ":Files<CR>")
 Map("n", "<leader>gf", ":vsp <cfile><CR>")
-Map("n", "<leader>gd", ":vsp <bar> call lsp#definition()<CR>")
+Map("n", "<leader>gd", ":vsp <bar> :lua vim.lsp.buf.definition()<CR>", { noremap=true, silent=true, buffer=bufnr })
 
-Map("n", "<leader>so", ":source $HOME/.config/nvim/init.vim<CR>")
-Map("c", "init", ":e $HOME/.config/nvim/init.vim<CR>")
-Map("c", "keymaps", ":e /home/jakob/.config/nvim/keymaps.lua<CR>")
+Map("n", "<leader>so", ":source $HOME/.config/nvim/init.vim<CR>", {silent = false})
+Map("c", "_init", "$HOME/.config/nvim/init.vim<CR>", {silent = false})
+Map("c", "_keymaps", "/home/jakob/.config/nvim/keymaps.lua<CR>", {silent = false})
 
 -- map change dir command
 Map("n", "<leader>cd", ":lcd %:p:h<cr> :pwd<cr>")
