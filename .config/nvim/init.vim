@@ -23,7 +23,6 @@ Plug 'michal-h21/vim-zettel'
 Plug 'puremourning/vimspector', { 'on': 'VimspectorReset' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ap/vim-css-color'
-Plug 'uga-rosa/ccc.nvim', { 'branch': '0.7.2' }
 Plug 'itchyny/vim-gitbranch'
 Plug 'morhetz/gruvbox'
 Plug 'franbach/miramare'
@@ -32,6 +31,7 @@ Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 Plug 'ayu-theme/ayu-vim'
 Plug 'sainnhe/gruvbox-material'
 Plug '~/.config/nvim/screenshotPathPlugin/'
+Plug 'lervag/vimtex'
 
 " Initialize plugin system
 call plug#end()
