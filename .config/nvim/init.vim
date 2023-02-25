@@ -43,7 +43,6 @@ syntax on
 source $HOME/.config/nvim/plenary.lua
 source $HOME/.config/nvim/vimwiki.vim
 source $HOME/.config/nvim/lsp.lua
-source $HOME/.config/nvim/sumneko_lua.lua
 source $HOME/.config/nvim/lsp-config.lua
 source $HOME/.config/nvim/null-ls.lua
 source $HOME/.config/nvim/vimspector.vim
@@ -101,6 +100,8 @@ set tabstop=2
 set shiftwidth=2
 " turn tabs to spaces
 set expandtab
+
+nmap <leader>< <Plug>VimwikiAddHeaderLevel
 
 " colors 
 hi User1 guifg=#eea390 guibg=#363834

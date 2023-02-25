@@ -2,7 +2,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 
 -- enable nvim to work with language servers
 -- add additional language servers in here:
-local servers = { 'clangd', 'pyright', 'tsserver', 'angularls', 'sqlls', 'cssls', 'html', 'emmet_ls', 'sumneko_lua', 'csharp_ls', 'bashls' }
+local servers = { 'clangd', 'pyright', 'tsserver', 'angularls', 'sqlls', 'cssls', 'html', 'emmet_ls', 'csharp_ls', 'bashls', 'jdtls' }
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -18,6 +18,13 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Use internal formatting for bindings like gq. 
+  vim.api.nvim_create_autocmd('LspAttach',{
+    callback = function(args)
+      vim.bo[args.buf].formatexpr=nil
+    end,
+  })
 
     -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -148,3 +155,5 @@ cmp.setup {
     })
   }
 }
+
+
