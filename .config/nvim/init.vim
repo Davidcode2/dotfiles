@@ -1,52 +1,9 @@
-call plug#begin()
-" The default plugin directory will be as follows:
-" Neovim (Linux): stdpath('data') . '/plugged'
-
-Plug 'nvim-lua/plenary.nvim'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'L3MON4D3/LuaSnip'
-Plug 'rafamadriz/friendly-snippets'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'vimwiki/vimwiki'
-Plug 'michal-h21/vim-zettel'
-Plug 'puremourning/vimspector', { 'on': 'VimspectorReset' }
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'ap/vim-css-color'
-Plug 'itchyny/vim-gitbranch'
-Plug '~/.config/nvim/screenshotPathPlugin/'
-Plug 'lervag/vimtex'
-
-" lsp
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'onsails/lspkind-nvim'
-Plug 'jose-elias-alvarez/null-ls.nvim'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-
-" themes 
-Plug 'morhetz/gruvbox'
-Plug 'franbach/miramare'
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
-Plug 'ayu-theme/ayu-vim'
-Plug 'sainnhe/gruvbox-material'
-
-" ui
-Plug 'stevearc/dressing.nvim'
-
-" Initialize plugin system
-call plug#end()
-
 set nocompatible
 filetype plugin on
 syntax on
 
+source $HOME/.config/nvim/plugins.vim
+source $HOME/.config/nvim/nvim_notify.lua
 source $HOME/.config/nvim/plenary.lua
 source $HOME/.config/nvim/vimwiki.vim
 source $HOME/.config/nvim/lsp.lua
@@ -62,7 +19,6 @@ source $HOME/.config/nvim/telescope.lua
 set undofile
 
 " colorscheme
-set termguicolors
 let g:gruvbox_contrast_dark='hard'
 let ayucolor="dark"
 let g:gruvbox_material_background='hard'
