@@ -2,20 +2,12 @@ call plug#begin()
 " The default plugin directory will be as follows:
 " Neovim (Linux): stdpath('data') . '/plugged'
 
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'onsails/lspkind-nvim'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
@@ -24,14 +16,29 @@ Plug 'puremourning/vimspector', { 'on': 'VimspectorReset' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ap/vim-css-color'
 Plug 'itchyny/vim-gitbranch'
+Plug '~/.config/nvim/screenshotPathPlugin/'
+Plug 'lervag/vimtex'
+
+" lsp
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'onsails/lspkind-nvim'
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+
+" themes 
 Plug 'morhetz/gruvbox'
 Plug 'franbach/miramare'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 Plug 'ayu-theme/ayu-vim'
 Plug 'sainnhe/gruvbox-material'
-Plug '~/.config/nvim/screenshotPathPlugin/'
-Plug 'lervag/vimtex'
+
+" ui
+Plug 'stevearc/dressing.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -49,6 +56,7 @@ source $HOME/.config/nvim/vimspector.vim
 source $HOME/.config/nvim/treesitter.lua
 source $HOME/.config/nvim/statusline.vim
 source $HOME/.config/nvim/keymaps.lua
+source $HOME/.config/nvim/telescope.lua
 
 " permanent undo
 set undofile
