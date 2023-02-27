@@ -21,11 +21,11 @@ source /usr/share/fzf/completion.zsh
 
 # determines search program for fzf
 if type ag &> /dev/null; then
-    export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g "" --hidden'
+    export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 fi
 # prefer rg over ag
 if type rg &> /dev/null; then
-    export FZF_DEFAULT_COMMAND='rg -p ~/.gitignore --files --hidden'
+    export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
 fi
 
 export EDITOR=nvim
