@@ -340,7 +340,7 @@ exec_always xdotool mousemove 1350 760
 ### lecture  flow ###
 #####################
 
-bindsym Mod4+l exec --no-startup-id python /usr/local/bin/university-setup-master/scripts/rofi-lectures.py
+# bindsym Mod4+l exec --no-startup-id python /usr/local/bin/university-setup-master/scripts/rofi-lectures.py
 bindsym Mod4+c exec --no-startup-id python /usr/local/bin/university-setup-master/scripts/rofi-courses.py
 
 #####################
@@ -411,6 +411,9 @@ bindsym --release Control+Shift+Print exec "/usr/local/bin/screencapture -s /hom
 bindsym --release Print exec "/usr/local/bin/screencapture /home/jakob/Pictures/Screenshots/"
 # take a screenshot of a whole window and copy it to a clipboard and save to notes dir
 bindsym --release Control+Print exec "/usr/local/bin/screencapture /home/jakob/OneDrive/notes/JoplinNotesMarkdown/_resources/"
+
+# keybinding i3lock
+bindsym --release Mod4+l exec i3lock
 
 # keybinding for starting polydoro timer
 bindsym $mod+t exec --no-startup-id python ~/.config/polybar/polydoro/polydoro.py

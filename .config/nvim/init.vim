@@ -3,7 +3,6 @@ filetype plugin on
 syntax on
 
 source $HOME/.config/nvim/plugins.vim
-source $HOME/.config/nvim/nvim_notify.lua
 source $HOME/.config/nvim/plenary.lua
 source $HOME/.config/nvim/vimwiki.vim
 source $HOME/.config/nvim/lsp.lua
@@ -14,6 +13,7 @@ source $HOME/.config/nvim/treesitter.lua
 source $HOME/.config/nvim/statusline.vim
 source $HOME/.config/nvim/keymaps.lua
 source $HOME/.config/nvim/telescope.lua
+source $HOME/.config/nvim/vimtex.vim
 
 " permanent undo
 set undofile
