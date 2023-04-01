@@ -14,6 +14,7 @@ source $HOME/.config/nvim/statusline.vim
 source $HOME/.config/nvim/keymaps.lua
 source $HOME/.config/nvim/telescope.lua
 source $HOME/.config/nvim/vimtex.vim
+source $HOME/.config/nvim/copilot.lua
 
 " permanent undo
 set undofile
