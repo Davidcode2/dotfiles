@@ -16,17 +16,17 @@ source ~/.config/zsh/.zprofile
 source ~/.config/shell/aliasrc
 
 # source keybindings
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+# source /usr/share/fzf/key-bindings.zsh
+# source /usr/share/fzf/completion.zsh
 
 # determines search program for fzf
 if type ag &> /dev/null; then
-    export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+    export FZF_DEFAULT_COMMAND='ag --ignore .git -g ""'
 fi
-# prefer rg over ag
-if type rg &> /dev/null; then
-    export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
-fi
+# # prefer rg over ag
+# if type rg &> /dev/null; then
+#     export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
+# fi
 
 export EDITOR=nvim
 # set default pager to nvimpager
@@ -62,15 +62,6 @@ zle-line-init() {
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-
-# fuzzy find scripts and open them in editor
-es() { du -a ~/.config/* /usr/local/bin/* ~/.zshrc | awk {'print $2'} | fzf | xargs -r $EDITOR ;}
-
-# fuzzy find any file in $HOME and open in editor
-ef() { du -a $HOME 2>/dev/null | awk {'print $2'} | fzf | xargs -r $EDITOR ;}
-
-# change to any directory in $HOME
-cD() { cd $(du $HOME 2>/dev/null | awk {'print $2'} | fzf) ;} 
 
 # search through pdfs with grep
 pdfsearch() {
@@ -125,3 +116,5 @@ setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 # do not save commands in history that start with a space
 setopt HIST_IGNORE_SPACE
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
