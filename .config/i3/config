@@ -437,8 +437,9 @@ bindsym $mod+Shift+w exec --no-startup-id /usr/local/bin/rofi-wifi-menu/rofi-wif
 bindsym Mod4+2 exec firefox 
 # open firefox in workspace 2
 assign [class="firefox"] $ws2
+assign [class="thunderbird"] $ws3
+assign [class="VirtualBox Manager"] $ws4
 assign [class="MQTT-Explorer"] $ws9
 assign [class="Microsoft-edge-dev"] $ws10
 assign [class="Inkscape"] $ws5
 assign [class="Windscribe"] $ws10
-
