@@ -442,4 +442,5 @@ assign [class="VirtualBox Manager"] $ws4
 assign [class="MQTT-Explorer"] $ws9
 assign [class="Microsoft-edge-dev"] $ws10
 assign [class="Inkscape"] $ws5
+assign [class="Spotify"] $ws5
 assign [class="Windscribe"] $ws10
