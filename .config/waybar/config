@@ -16,15 +16,15 @@
       "all-outputs": true,
       "format-icons": {
         "1": "",
-        "2": "",
-        "3": "",
-        "4": "",
-        "5": "",
-        "6": "",
-        "7": "",
-        "8": "",
-        "9": "",
-        // "10": "",
+        "2": "󰈹",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": "",
+        "7": "󰫢",
+        "8": "󱥸",
+        "9": "",
+        "10": "",
       }
     },
 
@@ -88,7 +88,7 @@
 
     "custom/backup": {
         "format": "",
-        "on-click": "sh ~/.local/bin/mtool.sh -b",
+        "on-click": "",
     },
 
     "custom/pacman": {
@@ -110,7 +110,7 @@
 
     "custom/clear-ram": {
         "format": "",
-        "on-click": "sh ~/.local/bin/clear-ram.sh"
+        "on-click": ""
     }
 }
 // vim:ft=json

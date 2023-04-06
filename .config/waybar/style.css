@@ -1,6 +1,6 @@
 * {
   font-family: Source Code Pro;
-  font-size: 13px;
+  font-size: 10px;
 }
 
 window#waybar {
@@ -27,7 +27,7 @@ window#waybar {
 }
 
 #workspaces button.active {
-  color: #9ccfd8;
+  color: #fceb2d;
 }
 
 #workspaces button.urgent {
