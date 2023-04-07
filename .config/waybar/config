@@ -1,9 +1,9 @@
 {
-    "height": 27,
+    "height": 10,
     "layer": "top",
-    "margin-top": 6,
+    "margin-top": 3,
     "margin-left": 5,
-    "margin-bottom": 5,
+    "margin-bottom": 0,
     "margin-right": 5,
     "spacing": 5,
     "modules-left": ["memory", "disk", "battery"], 
@@ -15,7 +15,7 @@
       "on-click": "activate",
       "all-outputs": true,
       "format-icons": {
-        "1": "",
+        "1": "",
         "2": "󰈹",
         "3": "",
         "4": "",
