@@ -48,8 +48,8 @@ window#waybar {
 #memory,
 #workspaces {
   padding: 0 10px;
-  border-radius: 10px;
-  background-color: rgba(31, 37, 48, 0.8);
+  border-radius: 16px;
+  background-color: rgba(31, 37, 48, 0.4);
 }
 
 #workspaces button {
