@@ -1,1 +1,2 @@
 map <C-o> feedkeys ":exec zathura-copy-path $FILE<Return>"
+set selection-clipboard clipboard
