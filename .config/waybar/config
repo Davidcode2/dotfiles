@@ -2,30 +2,18 @@
     "height": 26,
     "layer": "top",
     "margin-top": 5,
-    "margin-left": 5,
+    "margin-left": 0,
     "margin-bottom": 0,
     "margin-right": 5,
-    "spacing": 5,
-    "modules-left": ["memory", "disk", "battery"], 
-    "modules-center": ["wlr/workspaces"],
-    "modules-right": ["custom/clear-ram", "custom/backup", "backlight", "pulseaudio", "network", "clock", "tray"],
+    "spacing": 0,
+    "modules-left": ["wlr/workspaces"], 
+    "modules-center": [],
+    "modules-right": ["battery","backlight", "pulseaudio", "network", "clock", "tray"],
 
     "wlr/workspaces": {
       "format": "{icon}",
       "on-click": "activate",
       "all-outputs": true,
-      "format-icons": {
-        "1": "",
-        "2": "󰈹",
-        "3": "",
-        "4": "",
-        "5": "",
-        "6": "",
-        "7": "󰫢",
-        "8": "󱥸",
-        "9": "",
-        "10": "",
-      }
     },
 
     "hyprland/window": {
@@ -39,7 +27,7 @@
     },
 
     "tray": {
-        "spacing": 10
+        "spacing": 0
     },
 
     "cpu": {

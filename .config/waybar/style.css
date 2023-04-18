@@ -1,24 +1,24 @@
 * {
   font-family: Source Code Pro;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 window#waybar {
   background-color: transparent;
-  color: #e0def4;
+  color: white;
   transition-property: background-color;
   transition-duration: 0.5s;
-  border-top: 8px transparent;
-  border-radius: 8px;
+  border-top: 0px transparent;
+  border-radius: 0px;
   transition-duration: 0.5s;
-  margin: 16px 16px;
+  margin: 0px;
 }
 
 #workspaces button {
-  padding: 0 7px;
-  color: #908caa;
-  background-color: #26233a;
-  border-radius: 7.8px;
+  padding: 0 0px;
+  color: #898caa;
+  background-color: #adefac;
+  border-radius: 0px;
 }
 
 #workspaces button.focused {
@@ -47,9 +47,9 @@ window#waybar {
 #custom-clear-ram,
 #memory,
 #workspaces {
-  padding: 0 10px;
-  border-radius: 16px;
-  background-color: rgba(31, 37, 48, 0.4);
+  padding: 0 8px;
+  border-radius: 0px;
+  background-color: rgba(31, 37, 48, 0.0);
 }
 
 #workspaces button {
