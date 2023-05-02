@@ -15,6 +15,12 @@ source ~/.config/zsh/.zprofile
 # source alias file
 source ~/.config/shell/aliasrc
 
+# syntax highlighting
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# autocomplete
+# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # source keybindings
 # source /usr/share/fzf/key-bindings.zsh
 # source /usr/share/fzf/completion.zsh
@@ -124,3 +130,4 @@ if [ -f '/home/jakob/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jakob/googl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/jakob/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jakob/google-cloud-sdk/completion.zsh.inc'; fi
+
