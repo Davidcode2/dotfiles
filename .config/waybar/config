@@ -48,7 +48,7 @@
     "battery": {
         "interval": 60,
         "tooltip": false,
-        "format": "{icon} {capacity}%",
+        "format": "{icon}  {capacity}%",
         "states": {
             "warning": 25,
             "critical": 10
@@ -64,10 +64,10 @@
     },
     
     "network": {
-        "format-wifi": "直 {essid}",
-        "format-ethernet": " wired",
+        "format-wifi": "󰖩  {essid}",
+        "format-ethernet": "󰈀 wired",
         "on-click": "sh ~/.config/rofi/launchers/wifi/wifi.sh",
-        "format-disconnected": "睊  Disconnected",
+        "format-disconnected": "󰌙  Disconnected",
     },
 
     "custom/backup": {
@@ -85,7 +85,7 @@
 
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-muted": "婢  Muted",
+        "format-muted": "󰝟  Muted",
         "on-click": "pavucontrol",
         "format-icons": {
             "default": ["", "", ""]
