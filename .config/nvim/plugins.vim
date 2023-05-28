@@ -11,7 +11,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCM
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
 Plug 'michal-h21/vim-zettel'
-Plug 'puremourning/vimspector', { 'on': 'VimspectorReset' }
+Plug 'puremourning/vimspector' 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ap/vim-css-color'
 Plug '~/.config/nvim/screenshotPathPlugin/'
