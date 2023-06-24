@@ -17,6 +17,7 @@ source $HOME/.config/nvim/vimtex.vim
 source $HOME/.config/nvim/copilot.lua
 source $HOME/.config/nvim/snippets.lua
 source $HOME/.config/nvim/snippets.vim
+source $HOME/.config/nvim/mason.lua
 
 " permanent undo
 set undofile
