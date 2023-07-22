@@ -86,4 +86,4 @@ alias \
 	ip="ip -color=auto"
 
 # delete long entries in history
-alias shortenHistory='cat ~/.zhistory | grep -vx ".\{253,500\}" > ~/.zhistory'
+alias shortenHistory='cat ~/.zhistory | grep -vx ".\{253,500\}" >> ~/.zhistory_shortened'
