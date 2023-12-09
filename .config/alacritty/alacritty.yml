@@ -27,8 +27,8 @@ window:
   # Blank space added around the window in pixels. This padding is not scaled by
   # DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 0
-    y: 2
+    x: 10
+    y: 5
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
@@ -53,12 +53,12 @@ window:
   #   - SimpleFullscreen
 
   # Background opacity
-  opacity: 1.0
+  opacity: 0.85
 
 scrolling:
   # maximum number of lines in the scrollback buffer. Specifying '0' will
   # disable scrolling.
-  history: 0
+  history: 1000
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
@@ -69,7 +69,7 @@ font:
   # The normal (roman) font face to use.
   # Style can be specified to pick a specific face.
   normal:
-    family: Iosevka
+    family: InconsolataNerdFont
     style: Regular
     # family: "Fira Code"
     # family: "Source Code Pro"
@@ -77,14 +77,14 @@ font:
 
   # The bold font face
   bold:
-    family: Iosevka
+    family: InconsolataNerdFont
     style: Medium
     # family: "Fira Code"
     # family: "Source Code Pro"
 
   # The italic font face
   italic:
-    family: Iosevka
+    family: InconsolataNerdFont
     style: "Light Italic"
     # style: "Light Oblique"
     # family: "Fira Code"
@@ -92,7 +92,7 @@ font:
     # style: "Medium Italic"
 
   # Point size of the font
-  size: 8.0
+  size: 10.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.

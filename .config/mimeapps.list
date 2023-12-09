@@ -1,11 +1,15 @@
 [Default Applications]
-image/png=feh.desktop
-application/pdf=org.pwmt.zathura.desktop
-x-scheme-handler/mailto=userapp-Thunderbird-LOY3H1.desktop
-message/rfc822=userapp-Thunderbird-LOY3H1.desktop
-x-scheme-handler/mid=userapp-Thunderbird-LOY3H1.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-XBTXD2.desktop
+message/rfc822=userapp-Thunderbird-XBTXD2.desktop
+x-scheme-handler/mid=userapp-Thunderbird-XBTXD2.desktop
+x-scheme-handler/webcal=userapp-Thunderbird-F6KUD2.desktop
+text/calendar=userapp-Thunderbird-F6KUD2.desktop
+application/x-extension-ics=userapp-Thunderbird-F6KUD2.desktop
+x-scheme-handler/webcals=userapp-Thunderbird-F6KUD2.desktop
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
 
 [Added Associations]
-text/markdown=nvim.desktop;
-x-scheme-handler/mailto=userapp-Thunderbird-LOY3H1.desktop;
-x-scheme-handler/mid=userapp-Thunderbird-LOY3H1.desktop;
+x-scheme-handler/mailto=userapp-Thunderbird-XBTXD2.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-XBTXD2.desktop;
+x-scheme-handler/webcal=userapp-Thunderbird-F6KUD2.desktop;
+x-scheme-handler/webcals=userapp-Thunderbird-F6KUD2.desktop;

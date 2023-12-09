@@ -1,6 +1,6 @@
 # Default programs:
 export EDITOR="nvim"
-export TERMINAL="kitty"
+export TERMINAL="alacritty"
 export BROWSER="firefox"
 
 # ~/ Clean-up:
@@ -13,7 +13,3 @@ export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 # Other program settings:
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
-
-if [ -z "$DISPLAY" -a $XDG_VTNR -eq 1 ]; then
-  startx
-fi

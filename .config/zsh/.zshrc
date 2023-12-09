@@ -29,21 +29,18 @@ source ~/.config/shell/aliasrc
 if type ag &> /dev/null; then
     export FZF_DEFAULT_COMMAND='ag --ignore .git -g ""'
 fi
-# # prefer rg over ag
-# if type rg &> /dev/null; then
-#     export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
-# fi
 
 export EDITOR=nvim
 # set default pager to nvimpager
-export PAGER=nvimpager
 
 # add src folder to path 
 # the $PATH: at the beginning signifies that home/jakob.. should be appended to 
 # the end of the PATH.
 PATH=/home/jakob/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/home/jakob/.dotnet/tools:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/jakob/.local/bin/:/usr/bin/ltex-ls-15.2.0-linux-x64/ltex-ls-15.2.0/bin:/home/jakob/.local/share/gem/ruby/3.0.0/gems/tmuxinator-3.0.5/bin/:/home/jakob/.local/share/gem/ruby/3.0.0/gems/jekyll-4.3.2/exe/
 
-source /usr/share/nvm/init-nvm.sh
+## run laod_nvm in when wanting to use nvm
+export NVM_LAZY_LOAD=true
+export NVM_DIR="$HOME/.config/nvm"
 
 ################
 ## functions  ##
@@ -75,6 +72,19 @@ pdfsearch() {
   find $1 -name '*.pdf' -exec sh -c 'pdftotext "{}" - | grep --with-filename --label="{}" --color -C'$contextParam' "'$2'"' \;
 }
 
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do time $shell -i -c exit; done
+}
+
+function load_nvm() {
+  if [ -z "$_nvm_loaded" ]; then
+    source $NVM_DIR/nvm.sh
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    _nvm_loaded=true
+  fi
+}
+
 ################
 ## appearance ##
 ################
@@ -96,10 +106,6 @@ function git_branch_name()
 
 # Enable substitution in the prompt.
 setopt prompt_subst
-
-autoload -U colors && colors
-# This is another way to set the prompt
-PS1="%{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[cyan]%}%1~%{$reset_color%} %% "
 
 # this is the currently active prompt
 export PROMPT='%{$fg[cyan]%}$(git_branch_name)%F{111}%m:%F{2}%~ $%f '
@@ -130,4 +136,3 @@ if [ -f '/home/jakob/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jakob/googl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/jakob/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jakob/google-cloud-sdk/completion.zsh.inc'; fi
-

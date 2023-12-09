@@ -6,14 +6,17 @@ for command in reboot ; do
 done; unset command
 
 ################
+## variables  ##
+################
+
+notesDir="$HOME/Documents/notes"
+
+################
 ##  aliases   ##
 ################
 
-# use bat instead of cat
-alias cat='/bin/bat'
-
 # use this for ssh as suggested here: https://github.com/kovidgoyal/kitty/issues/713
-alias ssh="kitty +kitten ssh"
+#alias ssh="kitty +kitten ssh"
 
 # add alias for dotfiles repo
 alias config='/usr/bin/git --git-dir=/home/jakob/.cfg/ --work-tree=/home/jakob'
@@ -51,20 +54,16 @@ alias cd......="cd ../../../../.."
 # with global flag, to expand with <Ctrl+x a> 
 alias -g \
 	.C='~/.config' \
-	P='~/OneDrive/HochschuleAA/Allgemein/Planung' \
-	Au='~/OneDrive/HochschuleAA/bachelor-2/WS21/AuD2' \
-	Z='~/Zeiss' \
+	P='~/Documents/Hochschule/Allgemein/Planung' \
+	b4='~/Documents/Hochschule/bachelor-4/' \
 	O='~/Documents/Code/Odin' \
-	E='~/Documents/Code/exercism/' \
-	C='~/current-course' \
-	D='~/Downloads' \
-	N='~/OneDrive/notes/'\
+	N=$notesDir\
 
 # notes
-alias notes='nvim ~/OneDrive/notes/index.md'
+alias notes='nvim $notesDir/index.md'
 
 # todo
-alias todo='nvim ~/OneDrive/notes/todo.md'
+alias todo='nvim $notesDir/todo.md'
 
 # tmuxinator
 alias mux='tmuxinator'

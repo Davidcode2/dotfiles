@@ -2,19 +2,14 @@
     "layer": "top",
     "margin-bottom": 0,
     "spacing": 0,
-    "modules-left": ["wlr/workspaces"], 
+    "modules-left": ["sway/workspaces"], 
     "modules-center": [],
     "modules-right": ["battery","backlight", "pulseaudio", "network", "clock", "tray"],
 
-    "wlr/workspaces": {
+    "sway/workspaces": {
       "format": "{icon}",
       "on-click": "activate",
       "all-outputs": true,
-    },
-
-    "hyprland/window": {
-        "format": " {} ",
-        "separate-outputs": true,
     },
 
     "clock": {
@@ -88,7 +83,7 @@
         "format-muted": "󰝟  Muted",
         "on-click": "pavucontrol",
         "format-icons": {
-            "default": ["", "", ""]
+            "default": ["", "", " "]
         },
     },
 
