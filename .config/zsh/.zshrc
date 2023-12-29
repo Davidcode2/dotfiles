@@ -41,6 +41,8 @@ PATH=/home/jakob/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/u
 ## run laod_nvm in when wanting to use nvm
 export NVM_LAZY_LOAD=true
 export NVM_DIR="$HOME/.config/nvm"
+# source $NVM_DIR/nvm.sh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ################
 ## functions  ##
