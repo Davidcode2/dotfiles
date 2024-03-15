@@ -36,7 +36,7 @@ export EDITOR=nvim
 # add src folder to path 
 # the $PATH: at the beginning signifies that home/jakob.. should be appended to 
 # the end of the PATH.
-PATH=/home/jakob/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/home/jakob/.dotnet/tools:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/jakob/.local/bin/:/usr/bin/ltex-ls-15.2.0-linux-x64/ltex-ls-15.2.0/bin:/home/jakob/.local/share/gem/ruby/3.0.0/gems/tmuxinator-3.0.5/bin/:/home/jakob/.local/share/gem/ruby/3.0.0/gems/jekyll-4.3.2/exe/
+PATH=/home/jakob/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/home/jakob/.dotnet/tools:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/jakob/.local/bin/:/usr/bin/ltex-ls-15.2.0-linux-x64/ltex-ls-15.2.0/bin:/home/jakob/.local/share/gem/ruby/3.0.0/gems/tmuxinator-3.0.5/bin/:/home/jakob/.local/share/gem/ruby/3.0.0/gems/jekyll-4.3.2/exe/:~/.bun/bin:/home/jakob/.local/share/gem/ruby/3.0.0/bin
 
 ## run laod_nvm in when wanting to use nvm
 export NVM_LAZY_LOAD=true
@@ -138,3 +138,6 @@ if [ -f '/home/jakob/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jakob/googl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/jakob/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jakob/google-cloud-sdk/completion.zsh.inc'; fi
+
+# bun completions
+[ -s "/home/jakob/.bun/_bun" ] && source "/home/jakob/.bun/_bun"

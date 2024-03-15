@@ -19,6 +19,7 @@ source $HOME/.config/nvim/snippets.lua
 source $HOME/.config/nvim/snippets.vim
 source $HOME/.config/nvim/mason.lua
 source $HOME/.config/nvim/cmp.lua
+source $HOME/.config/nvim/flashcards.lua
 
 " permanent undo
 set undofile

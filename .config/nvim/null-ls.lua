@@ -13,7 +13,20 @@ null_ls.setup {
   debug = false,
   sources = {
     formatting.prettier.with {
-      extra_filetypes = {  },
+      filetypes = {
+        "javascript",
+        "typescript",
+        "css",
+        "scss",
+        "html",
+        "json",
+        "yaml",
+        "markdown",
+        "graphql",
+        "md",
+        "txt",
+      },
+      extra_filetypes = {},
       extra_args = { "--single-quote" },
     },
     diagnostics.eslint_d,

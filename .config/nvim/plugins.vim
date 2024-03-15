@@ -18,6 +18,7 @@ Plug '~/.config/nvim/screenshotPathPlugin/'
 Plug 'lervag/vimtex'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'alex-laycalvert/flashcards.nvim'
 
 " git
 Plug 'itchyny/vim-gitbranch'
