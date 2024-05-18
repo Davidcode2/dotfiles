@@ -38,6 +38,8 @@ alias y.='xclip -selection c <<< $(pwd)'
 # cd to content of clipboard
 alias cdp='cd $(xclip -selection c -o)'
 
+alias rundev='~/documents/code/devcontainer/rundev.sh'
+
 # start using lecture rofi script
 alias lectureRofi='python /usr/local/bin/university-setup-master/scripts/rofi-lectures.py'
 
