@@ -19,7 +19,7 @@ notesDir="$HOME/Documents/notes"
 #alias ssh="kitty +kitten ssh"
 
 # add alias for dotfiles repo
-alias config='/usr/bin/git --git-dir=/home/jakob/.cfg/ --work-tree=/home/jakob'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # add alias for nvim 
 alias vi='/usr/bin/nvim'
