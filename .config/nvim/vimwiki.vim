@@ -1,5 +1,5 @@
 " vimwiki
-let g:vimwiki_list = [{ 'path': '~/Documents/notes/',
+let g:vimwiki_list = [{ 'path': '~/documents/notes/',
 			\ 'syntax':'markdown', 'ext': '.md',
 			\ 'links_space_char': '_'}]
 

@@ -45,5 +45,12 @@ Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 Plug 'ayu-theme/ayu-vim'
 Plug 'sainnhe/gruvbox-material'
 
+" clojure
+Plug 'Olical/conjure', { 'tag': 'v4.3.1' }
+
+" python
+
+Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
+
 " Initialize plugin system
 call plug#end()

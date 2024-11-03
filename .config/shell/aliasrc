@@ -9,7 +9,7 @@ done; unset command
 ## variables  ##
 ################
 
-notesDir="$HOME/Documents/notes"
+notesDir="$HOME/documents/notes"
 
 ################
 ##  aliases   ##

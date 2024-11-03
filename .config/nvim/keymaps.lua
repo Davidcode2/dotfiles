@@ -34,3 +34,11 @@ Map("n", "<C-h>", "<C-w>h")
 Map("n", "<C-j>", "<C-w>j")
 Map("n", "<C-k>", "<C-w>k")
 Map("n", "<C-l>", "<C-w>l")
+
+-- python jupyter
+Map("n", "<leader>r", ":MagmaEvaluateOperator<CR>")
+Map("n", "<LocalLeader>rr", ":MagmaEvaluateLine<CR>")
+Map("x", "<LocalLeader>r ", ":<C-u>MagmaEvaluateVisual<CR>")
+Map("n", "<LocalLeader>rc", ":MagmaReevaluateCell<CR>")
+Map("n", "<LocalLeader>rd", ":MagmaDelete<CR>")
+Map("n", "<LocalLeader>ro", ":MagmaShowOutput<CR>")
