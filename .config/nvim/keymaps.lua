@@ -42,3 +42,7 @@ Map("x", "<LocalLeader>r ", ":<C-u>MagmaEvaluateVisual<CR>")
 Map("n", "<LocalLeader>rc", ":MagmaReevaluateCell<CR>")
 Map("n", "<LocalLeader>rd", ":MagmaDelete<CR>")
 Map("n", "<LocalLeader>ro", ":MagmaShowOutput<CR>")
+
+-- plantuml
+Map("n", "<leader>pu", ":! java -jar ~/.plantuml/plantuml.jar %<CR><CR>")
+Map("n", "<leader>ps", ":! java -jar ~/.plantuml/plantuml.jar %<CR><CR> :silent !xdg-open %:r.png &<CR>")

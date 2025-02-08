@@ -32,6 +32,9 @@ null_ls.setup {
     diagnostics.eslint_d,
     -- formatting.eslint_d,
     code_actions.eslint_d,
+    -- python formatting
+    formatting.prettier,
+    null_ls.builtins.formatting.black,
     null_ls.builtins.diagnostics.shellcheck,
     null_ls.builtins.code_actions.shellcheck
     -- diagnostics.flake8,

@@ -1,7 +1,6 @@
 window {
   margin:	0px;
   padding: 0px;
-  border-radius: 10px;
 	background-image: linear-gradient(#ff8a00, #e52e71, rgba(24,24,24,0.9), rgba(24,24,24,0.9), rgba(24,24,24,0.9), rgba(24,24,24,0.9), rgba(24,24,24,0.9));
   color: snow;
   opacity: 0.95

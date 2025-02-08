@@ -7,6 +7,9 @@ text/calendar=userapp-Thunderbird-F6KUD2.desktop
 application/x-extension-ics=userapp-Thunderbird-F6KUD2.desktop
 x-scheme-handler/webcals=userapp-Thunderbird-F6KUD2.desktop
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
+x-scheme-handler/eclipse+command x-scheme-handler/eclipse+mpc=_usr_lib_eclipse_.desktop
+x-scheme-handler/msteams=teams.desktop
+x-scheme-handler/postman=Postman.desktop
 
 [Added Associations]
 x-scheme-handler/mailto=userapp-Thunderbird-XBTXD2.desktop;
