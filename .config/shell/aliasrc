@@ -32,11 +32,11 @@ alias \
 # open images scaled to fit viewport
 alias feh='feh -.'
 
-# copy current path
-alias y.='xclip -selection c <<< $(pwd)'
+# Copy current path using wl-copy
+alias y.='wl-copy <<< $(pwd)'
 
-# cd to content of clipboard
-alias cdp='cd $(xclip -selection c -o)'
+# cd to content of clipboard using wl-paste
+alias cdp='cd $(wl-paste)'
 
 alias rundev='~/documents/code/devcontainer/rundev.sh'
 
