@@ -98,9 +98,9 @@
         "return-type": "json",
         "format": "{icon} {0}",
         "format-icons": {
-            "standby": "STANDBY",
-            "running": "RUNNING",
-            "paused": "PAUSE"
+            "standby": " ",
+            "running": " ",
+            "paused": "󰏨 "
         },
         "on-click": "~/.scripts/waybar_timer new 25 'notify-send \"Session finished\"'",
         "on-click-middle": "~/.scripts/waybar_timer cancel",

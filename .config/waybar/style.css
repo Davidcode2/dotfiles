@@ -147,6 +147,9 @@ window#waybar {
     color: #eb6f92;
 }
 
+.timer {
+    color: #f285ad;
+}
 
 #tray {
 }
