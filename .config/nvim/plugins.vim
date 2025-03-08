@@ -37,6 +37,9 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
 Plug 'williamboman/mason-lspconfig.nvim'
 
+" highlighting
+Plug 'glench/vim-jinja2-syntax'
+
 " themes 
 Plug 'morhetz/gruvbox'
 Plug 'franbach/miramare'
