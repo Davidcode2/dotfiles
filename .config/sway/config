@@ -229,6 +229,10 @@ bindsym --release Control+Print exec grim -g "$(slurp)" ~/Pictures/Screenshots/$
 
 bindsym $mod+p move workspace to output right
 
+# Pomodoro
+
+exec_always ~/.scripts/waybar_timer serve
+
 #####################
 ## assign programs ##
 #####################

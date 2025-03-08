@@ -4,7 +4,7 @@
     "spacing": 0,
     "modules-left": ["sway/workspaces"], 
     "modules-center": [],
-    "modules-right": ["battery","backlight", "pulseaudio", "network", "clock", "tray"],
+    "modules-right": ["custom/timer", "battery","backlight", "pulseaudio", "network", "clock", "tray"],
 
     "sway/workspaces": {
       "format": "{icon}",
@@ -90,6 +90,23 @@
     "custom/clear-ram": {
         "format": "",
         "on-click": ""
+    },
+
+    "custom/timer": {
+        "exec": "~/.scripts/waybar_timer hook",
+        "exec-on-event": false,
+        "return-type": "json",
+        "format": "{icon} {0}",
+        "format-icons": {
+            "standby": "STANDBY",
+            "running": "RUNNING",
+            "paused": "PAUSE"
+        },
+        "on-click": "~/.scripts/waybar_timer new 25 'notify-send \"Session finished\"'",
+        "on-click-middle": "~/.scripts/waybar_timer cancel",
+        "on-click-right": "~/.scripts/waybar_timer togglepause",
+        "on-scroll-up": "~/.scripts/waybar_timer increase 60 || ~/.scripts/waybar_timer new 1 'notify-send -u critical \"Timer expired\"'",
+        "on-scroll-down": "~/.scripts/waybar_timer decrease 60"
     }
 }
 // vim:ft=json
