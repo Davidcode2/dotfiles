@@ -43,6 +43,8 @@ call matchadd('ColorColumn', '\%81v', 100)
 
 " automatically change to notes dir when in notes
 autocmd BufEnter * if expand("%:p:h") =~# '**/notes$' | lcd %:p:h | endif
+" automatically change to blog dir when in blog
+autocmd BufEnter * if expand("%:p:h") =~# '**/blog$' | lcd %:p:h | endif
 " automatically change to current location when in courses folder
 autocmd BufEnter * if expand("%:p:h:h") =~# '**/WS\d\d$\|**/SS\d\d$' | lcd %:p:h | endif
 
