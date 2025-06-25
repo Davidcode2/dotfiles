@@ -1,4 +1,4 @@
-Dotfiles 🏡
+# Dotfiles 🏡
 
 Welcome to my personal dotfiles repository! This is where I keep all my configuration files to ensure a consistent and comfortable environment across my systems.
 
