@@ -11,7 +11,6 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
 Plug 'michal-h21/vim-zettel'
-Plug 'puremourning/vimspector' 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ap/vim-css-color'
 Plug '~/.config/nvim/screenshotPathPlugin/'
@@ -19,6 +18,13 @@ Plug 'lervag/vimtex'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'alex-laycalvert/flashcards.nvim'
+
+" debugging
+"Plug 'puremourning/vimspector' 
+Plug 'mxsdev/nvim-dap-vscode-js'
+Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-neotest/nvim-nio'
+Plug 'rcarriga/nvim-dap-ui'
 
 " git
 Plug 'itchyny/vim-gitbranch'
@@ -29,6 +35,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'onsails/lspkind-nvim'
 Plug 'nvimtools/none-ls.nvim'
+Plug 'nvimtools/none-ls-extras.nvim'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -52,8 +59,26 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'Olical/conjure', { 'tag': 'v4.3.1' }
 
 " python
-
 Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
+
+""""""""""""""""""""""
+" avante.vim
+""""""""""""""""""""""
+
+" Deps
+Plug 'stevearc/dressing.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'MeanderingProgrammer/render-markdown.nvim'
+
+" Optional deps
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'HakonHarnes/img-clip.nvim'
+Plug 'zbirenbaum/copilot.lua'
+
+" Yay, pass source=true if you want to build from source
+" Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+
+"""""""""""""""""""""""
 
 " Initialize plugin system
 call plug#end()

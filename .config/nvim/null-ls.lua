@@ -1,18 +1,10 @@
-local null_ls_status_ok, null_ls = pcall(require, "null-ls")
-if not null_ls_status_ok then
-  return
-end
+local null_ls = require("null-ls")
 
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-local formatting = null_ls.builtins.formatting
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-local diagnostics = null_ls.builtins.diagnostics
-local code_actions = null_ls.builtins.code_actions
-
-null_ls.setup {
-  debug = false,
+null_ls.setup({
   sources = {
-    formatting.prettier.with {
+    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.completion.spell,
+    null_ls.builtins.formatting.prettier.with {
       filetypes = {
         "javascript",
         "typescript",
@@ -29,15 +21,8 @@ null_ls.setup {
       extra_filetypes = {},
       extra_args = { "--single-quote" },
     },
-    diagnostics.eslint_d,
-    -- formatting.eslint_d,
-    code_actions.eslint_d,
-    -- python formatting
-    formatting.prettier,
-    null_ls.builtins.formatting.black,
-    null_ls.builtins.diagnostics.shellcheck,
-    null_ls.builtins.code_actions.shellcheck
-    -- diagnostics.flake8,
+    null_ls.builtins.formatting.prettier,
+    require("none-ls.diagnostics.eslint"),
+    require("none-ls.code_actions.eslint"),
   },
-  notify_format = "[null-ls] %s",
-}
+})

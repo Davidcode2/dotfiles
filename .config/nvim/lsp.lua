@@ -3,7 +3,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 -- enable nvim to work with language servers
 -- add additional language servers in here:
 local servers = { 'clangd', 'pyright', 'ts_ls', 'angularls', 'sqlls', 'cssls', 'html', 'emmet_ls', 'csharp_ls',
-  'bashls', 'jdtls', 'lua_ls', 'tailwindcss', 'phpactor' }
+  'bashls', 'jdtls', 'lua_ls', 'tailwindcss', 'phpactor', 'gh_actions_ls', 'yamlls', 'yamlfmt', 'terraformls' }
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -51,11 +51,46 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-    }
-  }
+  vim.lsp.enable(lsp)
 end
 
+vim.lsp.config('yamlfmt', {
+  settings = {
+    ['yamlls'] = { yamlls },
+  },
+})
+
+local yamlls = {
+  -- Have to add this for yamlls to understand that we support line folding
+  capabilities = {
+    textDocument = {
+      foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      },
+    },
+  },
+  settings = {
+    redhat = { telemetry = { enabled = false } },
+    yaml = {
+      keyOrdering = false,
+      format = {
+        enable = true,
+      },
+      validate = true,
+      schemaStore = {
+        -- Must disable built-in schemaStore support to use
+        -- schemas from SchemaStore.nvim plugin
+        enable = false,
+        -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+        url = "",
+      },
+    },
+  },
+}
+
+vim.lsp.config('yamlls', {
+  settings = {
+    ['yamlls'] = { yamlls },
+  },
+})

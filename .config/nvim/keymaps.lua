@@ -46,3 +46,25 @@ Map("n", "<LocalLeader>ro", ":MagmaShowOutput<CR>")
 -- plantuml
 Map("n", "<leader>pu", ":! java -jar ~/.plantuml/plantuml.jar %<CR><CR>")
 Map("n", "<leader>ps", ":! java -jar ~/.plantuml/plantuml.jar %<CR><CR> :silent !xdg-open %:r.png &<CR>")
+
+-- dap
+local dap = require('dap')
+Map('n', '<F5>', dap.continue, { desc = 'Debug: Continue' })
+Map('n', '<F10>', dap.step_over, { desc = 'Debug: Step Over' })
+Map('n', '<F11>', dap.step_into, { desc = 'Debug: Step Into' })
+Map('n', '<F12>', dap.step_out, { desc = 'Debug: Step Out' })
+Map('n', '<Leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
+Map('n', '<Leader>B', function() dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ') end,
+  { desc = 'Debug: Set Conditional Breakpoint' })
+Map('n', '<Leader>lp', function() dap.set_breakpoint(nil, nil, vim.fn.input 'Log point message: ') end,
+  { desc = 'Debug: Set Log Point' })
+Map('n', '<Leader>dr', dap.repl.open, { desc = 'Debug: Open REPL' })
+Map('n', '<Leader>dl', dap.run_last, { desc = 'Debug: Run Last Configuration' })
+Map('n', '<Leader>dt', dap.terminate, { desc = 'Debug: Terminate Session' })
+Map('n', '<Leader>da', dap.attach, { desc = 'Debug: Attach to Process' })
+
+-- dap-ui
+local dap_ui = require("dapui")
+Map('n', '<Leader>do', dap_ui.open, { desc = 'Open Dap UI' })
+Map('n', '<Leader>dc', dap_ui.close, { desc = 'Close Dap UI' })
+Map('n', '<Leader>dT', dap_ui.toggle, { desc = 'Toggle Dap UI' })

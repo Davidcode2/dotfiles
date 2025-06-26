@@ -20,6 +20,8 @@ source $HOME/.config/nvim/snippets.vim
 source $HOME/.config/nvim/mason.lua
 source $HOME/.config/nvim/cmp.lua
 source $HOME/.config/nvim/flashcards.lua
+"source $HOME/.config/nvim/avante.lua
+source $HOME/.config/nvim/nvim-dap.lua
 
 " permanent undo
 set undofile
@@ -81,3 +83,7 @@ hi User2 guifg=#ff86ff guibg=#363834
 hi User3 guifg=#ff98ff guibg=#363834
 hi User4 guifg=#a0ee67 guibg=#363834
 hi User5 guifg=#eeee73 guibg=#363834
+
+" formatting
+
+au FileType yaml let &l:formatprg= "yamlfmt /dev/stdin"
