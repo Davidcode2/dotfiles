@@ -38,11 +38,31 @@ export EDITOR=nvim
 # the end of the PATH.
 PATH=/home/jakob/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/home/jakob/.dotnet/tools:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/jakob/.local/bin/:/usr/bin/ltex-ls-15.2.0-linux-x64/ltex-ls-15.2.0/bin:/home/jakob/.local/share/gem/ruby/3.0.0/gems/tmuxinator-3.0.5/bin/:/home/jakob/.local/share/gem/ruby/3.0.0/gems/jekyll-4.3.2/exe/:~/.bun/bin:/home/jakob/.local/share/gem/ruby/3.0.0/bin
 
-## run laod_nvm in when wanting to use nvm
+
+#################
+##     nvm     ##
+#################
+
+## run load_nvm in when wanting to use nvm
 export NVM_LAZY_LOAD=true
 export NVM_DIR="$HOME/.config/nvm"
-# source $NVM_DIR/nvm.sh
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+######################
+## auto load stuff  ##
+######################
+
+# needs to run before aws auto_completer
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+
+#################
+## completion  ##
+#################
+
+# aws autocomplete
+complete -C '/usr/local/bin/aws_completer' aws
+# nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
 
 ################
 ## functions  ##
@@ -141,3 +161,4 @@ if [ -f '/home/jakob/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jakob
 
 # bun completions
 [ -s "/home/jakob/.bun/_bun" ] && source "/home/jakob/.bun/_bun"
+
