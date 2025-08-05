@@ -22,6 +22,7 @@ source $HOME/.config/nvim/cmp.lua
 source $HOME/.config/nvim/flashcards.lua
 "source $HOME/.config/nvim/avante.lua
 source $HOME/.config/nvim/nvim-dap.lua
+source $HOME/.config/nvim/copilotChat.lua
 
 " permanent undo
 set undofile
@@ -87,3 +88,4 @@ hi User5 guifg=#eeee73 guibg=#363834
 " formatting
 
 au FileType yaml let &l:formatprg= "yamlfmt /dev/stdin"
+

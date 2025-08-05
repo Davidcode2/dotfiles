@@ -1,0 +1,12 @@
+require("CopilotChat").setup()
+
+vim.keymap.set("n", "<leader>cc", ":CopilotChat<CR>", { desc = "Open CopilotChat" })
+vim.keymap.set("n", "<leader>co", ":CopilotChatOpen<CR>", { desc = "Open chat window" })
+vim.keymap.set("n", "<leader>cq", ":CopilotChatClose<CR>", { desc = "Close chat window" })
+vim.keymap.set("n", "<leader>ct", ":CopilotChatToggle<CR>", { desc = "Toggle chat window" })
+vim.keymap.set("n", "<leader>cs", ":CopilotChatStop<CR>", { desc = "Stop current output" })
+vim.keymap.set("n", "<leader>cr", ":CopilotChatReset<CR>", { desc = "Reset chat window" })
+vim.keymap.set("n", "<leader>cS", ":CopilotChatSave<CR>", { desc = "Save chat history" })
+vim.keymap.set("n", "<leader>cL", ":CopilotChatLoad<CR>", { desc = "Load chat history" })
+vim.keymap.set("n", "<leader>cp", ":CopilotChatPrompts<CR>", { desc = "View/select prompt templates" })
+vim.keymap.set("n", "<leader>cm", ":CopilotChatModels<CR>", { desc = "View/select available models" })

@@ -1,6 +1,4 @@
 call plug#begin()
-" The default plugin directory will be as follows:
-" Neovim (Linux): stdpath('data') . '/plugged'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'saadparwaiz1/cmp_luasnip'
@@ -60,6 +58,12 @@ Plug 'Olical/conjure', { 'tag': 'v4.3.1' }
 
 " python
 Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
+
+""""""""""""""""""""""
+" AI
+""""""""""""""""""""""
+
+Plug 'CopilotC-Nvim/CopilotChat.nvim'
 
 """"""""""""""""""""""
 " avante.vim
