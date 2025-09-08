@@ -64,6 +64,8 @@ Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
 """"""""""""""""""""""
 
 Plug 'CopilotC-Nvim/CopilotChat.nvim'
+Plug 'olimorris/codecompanion.nvim'
+Plug 'ravitemer/mcphub.nvim'
 
 """"""""""""""""""""""
 " avante.vim
@@ -86,3 +88,7 @@ Plug 'zbirenbaum/copilot.lua'
 
 " Initialize plugin system
 call plug#end()
+
+lua << EOF
+  require("codecompanion").setup()
+EOF

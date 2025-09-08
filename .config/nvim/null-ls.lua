@@ -17,6 +17,7 @@ null_ls.setup({
         "graphql",
         "md",
         "txt",
+        "hbs",
       },
       extra_filetypes = {},
       extra_args = { "--single-quote" },

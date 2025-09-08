@@ -19,12 +19,12 @@ Map("v", "ö", ":", { silent = false })
 Map("n", "<C-s>", ":Ag<cr>")
 -- Map("n", "<leader>guf", ":GFiles<cr>")
 -- Map("n", "<leader>f", ":Files<CR>")
-Map("n", "<leader>gd", ":only <bar> vsplit<CR>:normal gd<CR>", { noremap=true, silent=true, buffer=bufnr })
-Map("n", "<leader>gf", ":only <bar> vsplit<CR>:normal gf<CR>", { noremap=true, silent=true, buffer=bufnr })
+Map("n", "<leader>gd", ":only <bar> vsplit<CR>:normal gd<CR>", { noremap = true, silent = true, buffer = bufnr })
+Map("n", "<leader>gf", ":only <bar> vsplit<CR>:normal gf<CR>", { noremap = true, silent = true, buffer = bufnr })
 
-Map("n", "<leader>so", ":source $HOME/.config/nvim/init.vim<CR>", {silent = false})
-Map("c", "_init", ":e $HOME/.config/nvim/init.vim<CR>", {silent = false})
-Map("c", "_keymaps", ":e /home/jakob/.config/nvim/keymaps.lua<CR>", {silent = false})
+Map("n", "<leader>so", ":source $HOME/.config/nvim/init.vim<CR>", { silent = false })
+Map("c", "_init", ":e $HOME/.config/nvim/init.vim<CR>", { silent = false })
+Map("c", "_keymaps", ":e /home/jakob/.config/nvim/keymaps.lua<CR>", { silent = false })
 
 -- map change dir command
 Map("n", "<leader>cd", ":lcd %:p:h<cr> :pwd<cr>")
@@ -68,3 +68,22 @@ local dap_ui = require("dapui")
 Map('n', '<Leader>do', dap_ui.open, { desc = 'Open Dap UI' })
 Map('n', '<Leader>dc', dap_ui.close, { desc = 'Close Dap UI' })
 Map('n', '<Leader>dT', dap_ui.toggle, { desc = 'Toggle Dap UI' })
+
+-- CopilotChat
+Map("n", "<leader>co", ":CopilotChatOpen<CR>", { desc = "Open chat window" })
+Map("n", "<leader>cq", ":CopilotChatClose<CR>", { desc = "Close chat window" })
+Map("n", "<leader>ct", ":CopilotChatToggle<CR>", { desc = "Toggle chat window" })
+Map("n", "<leader>cs", ":CopilotChatStop<CR>", { desc = "Stop current output" })
+Map("n", "<leader>cr", ":CopilotChatReset<CR>", { desc = "Reset chat window" })
+Map("n", "<leader>cS", ":CopilotChatSave<CR>", { desc = "Save chat history" })
+Map("n", "<leader>cL", ":CopilotChatLoad<CR>", { desc = "Load chat history" })
+Map("n", "<leader>cp", ":CopilotChatPrompts<CR>", { desc = "View/select prompt templates" })
+Map("n", "<leader>cm", ":CopilotChatModels<CR>", { desc = "View/select available models" })
+
+-- CodeCompanion
+Map("n", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+Map("n", "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+Map("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+
+-- Expand 'cc' into 'CodeCompanion' in the command line
+vim.cmd([[cab cc CodeCompanion]])

@@ -23,6 +23,7 @@ source $HOME/.config/nvim/flashcards.lua
 "source $HOME/.config/nvim/avante.lua
 source $HOME/.config/nvim/nvim-dap.lua
 source $HOME/.config/nvim/copilotChat.lua
+source $HOME/.config/nvim/codecompanion.lua
 
 " permanent undo
 set undofile
@@ -86,6 +87,6 @@ hi User4 guifg=#a0ee67 guibg=#363834
 hi User5 guifg=#eeee73 guibg=#363834
 
 " formatting
-
 au FileType yaml let &l:formatprg= "yamlfmt /dev/stdin"
 
+au BufRead,BufNewFile *.hbs set filetype=html
