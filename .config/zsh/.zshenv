@@ -14,3 +14,5 @@ export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 # Other program settings:
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
+
+export ANTHROPIC_API_KEY=$(< ~/keys/.anthropic-secret-key.txt)

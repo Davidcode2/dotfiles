@@ -162,3 +162,11 @@ if [ -f '/home/jakob/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jakob
 # bun completions
 [ -s "/home/jakob/.bun/_bun" ] && source "/home/jakob/.bun/_bun"
 
+
+# pnpm
+export PNPM_HOME="/home/jakob/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

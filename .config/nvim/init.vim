@@ -9,7 +9,6 @@ source $HOME/.config/nvim/lsp.lua
 source $HOME/.config/nvim/lsp-config.lua
 source $HOME/.config/nvim/null-ls.lua
 source $HOME/.config/nvim/vimspector.vim
-source $HOME/.config/nvim/treesitter.lua
 source $HOME/.config/nvim/statusline.vim
 source $HOME/.config/nvim/keymaps.lua
 source $HOME/.config/nvim/telescope.lua

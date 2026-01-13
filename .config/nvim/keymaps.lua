@@ -81,7 +81,7 @@ Map("n", "<leader>cp", ":CopilotChatPrompts<CR>", { desc = "View/select prompt t
 Map("n", "<leader>cm", ":CopilotChatModels<CR>", { desc = "View/select available models" })
 
 -- CodeCompanion
-Map("n", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+Map("n", "<LocalLeader-ab>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
 Map("n", "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
 Map("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
 
