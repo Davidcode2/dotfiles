@@ -1,15 +1,5 @@
 local dap = require('dap')
 
--- Set up dap-ui
-require("dapui").setup()
-
--- python adapter
-dap.adapters.python = {
-  type = 'executable',
-  command = os.getenv('HOME') .. '/.virtualenvs/tools/bin/python',
-  args = { '-m', 'debugpy.adapter' },
-}
-
 -- pwa node adapter
 dap.adapters['pwa-node'] = {
   type = 'server',
@@ -117,10 +107,3 @@ for _, language in ipairs(js_based_languages) do
     },
   }
 end
-
--- commented out due to https://github.com/mxsdev/nvim-dap-vscode-js/issues/58#issuecomment-2582575821
--- setup dap-vscode-js for debugging nodejs and web applications
--- require("dap-vscode-js").setup({
---   debugger_path = "/home/jakob/vscode-js-debug",
---   adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
--- })

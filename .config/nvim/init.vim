@@ -20,7 +20,7 @@ source $HOME/.config/nvim/mason.lua
 source $HOME/.config/nvim/cmp.lua
 source $HOME/.config/nvim/flashcards.lua
 "source $HOME/.config/nvim/avante.lua
-source $HOME/.config/nvim/nvim-dap.lua
+source $HOME/.config/nvim/dap/nvim-dap.lua
 source $HOME/.config/nvim/copilotChat.lua
 source $HOME/.config/nvim/codecompanion.lua
 
