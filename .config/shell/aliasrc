@@ -88,3 +88,6 @@ alias \
 
 # delete long entries in history
 alias shortenHistory='cat ~/.zhistory | grep -vx ".\{253,500\}" >> ~/.zhistory_shortened'
+
+# alias grep to ripgrep (rg)
+alias grep='rg'
