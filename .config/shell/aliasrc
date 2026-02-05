@@ -19,7 +19,11 @@ notesDir="$HOME/documents/notes"
 #alias ssh="kitty +kitten ssh"
 
 # add alias for dotfiles repo
+<<<<<<< Updated upstream
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+=======
+alias config='/usr/bin/git --git-dir=/Users/de10k21533/.cfg/ --work-tree=/Users/de10k21533'
+>>>>>>> Stashed changes
 
 # add alias for nvim 
 alias vi='/usr/bin/nvim'

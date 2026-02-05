@@ -16,3 +16,12 @@ export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 # Other program settings:
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
+<<<<<<< Updated upstream
+=======
+
+if [ -z "$DISPLAY" -a $XDG_VTNR -eq 1 ]; then
+  startx
+fi
+
+eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+>>>>>>> Stashed changes

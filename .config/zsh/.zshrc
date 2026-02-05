@@ -34,9 +34,13 @@ export EDITOR=nvim
 # set default pager to nvimpager
 
 # add src folder to path 
-# the $PATH: at the beginning signifies that home/jakob.. should be appended to 
+# the $PATH: at the beginning signifies that home/de10k21533.. should be appended to 
 # the end of the PATH.
+<<<<<<< Updated upstream
 PATH=/home/jakob/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/home/jakob/.dotnet/tools:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/jakob/.local/bin/:/usr/bin/ltex-ls-15.2.0-linux-x64/ltex-ls-15.2.0/bin:/home/jakob/.local/share/gem/ruby/3.0.0/gems/tmuxinator-3.0.5/bin/:/home/jakob/.local/share/gem/ruby/3.0.0/gems/jekyll-4.3.2/exe/:~/.bun/bin:/home/jakob/.local/share/gem/ruby/3.0.0/bin
+=======
+PATH=/home/de10k21533/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/home/de10k21533/.dotnet/tools:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/de10k21533/.local/bin/:/usr/bin/ltex-ls-15.2.0-linux-x64/ltex-ls-15.2.0/bin
+>>>>>>> Stashed changes
 
 
 #################
