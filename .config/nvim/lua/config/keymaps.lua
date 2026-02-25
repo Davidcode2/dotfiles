@@ -4,7 +4,7 @@
 
 local map = LazyVim.safe_keymap_set
 
-map("n", "ö", ":", { desc = "enter command mode", remap = true })
+--map("n", ";", ":", { desc = "enter command mode", remap = true })
 map("i", "jh", "<esc>", { desc = "enter command mode", remap = true })
 
 -- disable ESC and vertical movements to prevent accidentally moving lines

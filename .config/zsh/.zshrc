@@ -24,6 +24,7 @@ source ~/.config/shell/aliasrc
 # source keybindings
 # source /usr/share/fzf/key-bindings.zsh
 # source /usr/share/fzf/completion.zsh
+bindkey '^X' fzf-cd-widget
 
 # determines search program for fzf
 if type ag &> /dev/null; then
@@ -36,12 +37,14 @@ export EDITOR=nvim
 # add src folder to path 
 # the $PATH: at the beginning signifies that home/de10k21533.. should be appended to 
 # the end of the PATH.
-<<<<<<< Updated upstream
-PATH=/home/jakob/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/home/jakob/.dotnet/tools:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/jakob/.local/bin/:/usr/bin/ltex-ls-15.2.0-linux-x64/ltex-ls-15.2.0/bin:/home/jakob/.local/share/gem/ruby/3.0.0/gems/tmuxinator-3.0.5/bin/:/home/jakob/.local/share/gem/ruby/3.0.0/gems/jekyll-4.3.2/exe/:~/.bun/bin:/home/jakob/.local/share/gem/ruby/3.0.0/bin
-=======
-PATH=/home/de10k21533/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/home/de10k21533/.dotnet/tools:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/de10k21533/.local/bin/:/usr/bin/ltex-ls-15.2.0-linux-x64/ltex-ls-15.2.0/bin
->>>>>>> Stashed changes
+PATH=/Users/de10k21533/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.local/bin/:/usr/bin/ltex-ls-15.2.0-linux-x64/ltex-ls-15.2.0/bin:$HOME/.local/share/gem/ruby/3.0.0/gems/tmuxinator-3.0.5/bin/:$HOME/.local/share/gem/ruby/3.0.0/gems/jekyll-4.3.2/exe/:~/.bun/bin:$HOME/.local/share/gem/ruby/3.0.0/bin
 
+# opencode
+export PATH=$HOME/.opencode/bin:$PATH
+# dotnet
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT
+export PATH=$PATH:$DOTNET_ROOT/tools
 
 #################
 ##     nvm     ##
@@ -103,13 +106,11 @@ timezsh() {
   for i in $(seq 1 10); do time $shell -i -c exit; done
 }
 
-function load_nvm() {
-  if [ -z "$_nvm_loaded" ]; then
-    source $NVM_DIR/nvm.sh
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-    _nvm_loaded=true
-  fi
-}
+if [ -z "$_nvm_loaded" ]; then
+  source $NVM_DIR/nvm.sh
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  _nvm_loaded=true
+fi
 
 ################
 ## appearance ##
@@ -158,22 +159,23 @@ setopt HIST_IGNORE_SPACE
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/jakob/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jakob/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/jakob/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jakob/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
 
 # bun completions
-[ -s "/home/jakob/.bun/_bun" ] && source "/home/jakob/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 
 # pnpm
-export PNPM_HOME="/home/jakob/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
-# opencode
-export PATH=/home/jakob/.opencode/bin:$PATH
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+eval "$(saml2aws --completion-script-zsh)"

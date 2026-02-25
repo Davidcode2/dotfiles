@@ -19,14 +19,10 @@ notesDir="$HOME/documents/notes"
 #alias ssh="kitty +kitten ssh"
 
 # add alias for dotfiles repo
-<<<<<<< Updated upstream
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-=======
-alias config='/usr/bin/git --git-dir=/Users/de10k21533/.cfg/ --work-tree=/Users/de10k21533'
->>>>>>> Stashed changes
 
 # add alias for nvim 
-alias vi='/usr/bin/nvim'
+alias vi='/opt/homebrew/bin/nvim'
 
 # alias for zathura, opening it always as a new process
 alias \
@@ -36,11 +32,11 @@ alias \
 # open images scaled to fit viewport
 alias feh='feh -.'
 
-# Copy current path using wl-copy
-alias y.='wl-copy <<< $(pwd)'
+# Copy current path using wl-copy (pbcopy on macos)
+alias y.='pbcopy <<< $(pwd)'
 
-# cd to content of clipboard using wl-paste
-alias cdp='cd $(wl-paste)'
+# cd to content of clipboard using wl-paste (pbpaste on macos)
+alias cdp='cd $(pbpaste)'
 
 alias rundev='~/documents/code/devcontainer/rundev.sh'
 
@@ -84,8 +80,8 @@ alias \
 
 # Colorize commands when possible.
 alias \
-  ll='ls -l'\
-	ls="ls -hN --color=auto --group-directories-first" \
+  ll='gls -l --color=auto --group-directories-first'\
+	ls="gls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ip="ip -color=auto"

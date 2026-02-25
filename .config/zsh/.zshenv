@@ -1,8 +1,7 @@
-
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export BROWSER="firefox"
+export BROWSER='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -15,4 +14,8 @@ export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 
-export ANTHROPIC_API_KEY=$(< ~/keys/.anthropic-secret-key.txt)
+# ATAC
+export ATAC_KEY_BINDINGS=$HOME/.config/atac/vim_key_bindings.toml
+
+# JIRA CLI
+export JIRA_API_TOKEN=$(security find-generic-password -a "$USER" -s "JIRA_API_TOKEN" -w)
