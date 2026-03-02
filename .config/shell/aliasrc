@@ -91,3 +91,7 @@ alias shortenHistory='cat ~/.zhistory | grep -vx ".\{253,500\}" >> ~/.zhistory_s
 
 # alias grep to ripgrep (rg)
 alias grep='rg'
+
+# security
+# Generate a random 32-character password and copy to clipboard
+alias genpass="openssl rand -base64 32 | pbcopy"

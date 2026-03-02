@@ -112,6 +112,16 @@ if [ -z "$_nvm_loaded" ]; then
   _nvm_loaded=true
 fi
 
+# Store a password: 'setpass <key_name> <password>'
+setpass() {
+  security add-generic-password -a "$USER" -s "$1" -w "$2" -U
+}
+
+# Get a password: 'getpass <key_name>'
+getpass() {
+  security find-generic-password -a "$USER" -s "$1" -w
+}
+
 ################
 ## appearance ##
 ################
