@@ -6,6 +6,11 @@ Clean code
 - short classes (rarely more than 200 lines)
 - SRP (Single Responsibility Principle)
 
+# Workflow
+
+Commit frequently using descriptive commit messages.
+Reference the bd task id in the commit message title.
+
 # Task Tracking with bd (beads)
 
 Use bd for task/issue tracking in every repository. Tasks are stored in a Dolt database and synced to GitHub.

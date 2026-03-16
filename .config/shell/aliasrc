@@ -29,8 +29,8 @@ alias \
 	zathura='zathura --fork' \
 	z='zathura --fork' \
 
-# open images scaled to fit viewport
-alias feh='feh -.'
+# open images scaled to fit viewport with rename action (press 1 to rename)
+alias feh='feh --action1 "~/.config/feh/feh-rename.sh %f %n" --auto-reload -.'
 
 # Copy current path using wl-copy
 alias y.='wl-copy <<< $(pwd)'
