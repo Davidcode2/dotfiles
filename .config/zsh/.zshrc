@@ -11,6 +11,7 @@ bindkey -v
 # check diagram on here:
 # https://unix.stackexchange.com/questions/320465/new-tmux-sessions-do-not-source-bashrc-file
 source ~/.config/zsh/.zprofile
+source ~/.config/zsh/.zshenv
 
 # source alias file
 source ~/.config/shell/aliasrc
@@ -37,7 +38,7 @@ export EDITOR=nvim
 # add src folder to path 
 # the $PATH: at the beginning signifies that home/de10k21533.. should be appended to 
 # the end of the PATH.
-PATH=/Users/de10k21533/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.local/bin/:/usr/bin/ltex-ls-15.2.0-linux-x64/ltex-ls-15.2.0/bin:$HOME/.local/share/gem/ruby/3.0.0/gems/tmuxinator-3.0.5/bin/:$HOME/.local/share/gem/ruby/3.0.0/gems/jekyll-4.3.2/exe/:~/.bun/bin:$HOME/.local/share/gem/ruby/3.0.0/bin
+PATH=/Users/de10k21533/.nvm/versions/node/v16.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.local/bin/:/usr/bin/ltex-ls-15.2.0-linux-x64/ltex-ls-15.2.0/bin:$HOME/.local/share/gem/ruby/3.0.0/gems/tmuxinator-3.0.5/bin/:$HOME/.local/share/gem/ruby/3.0.0/gems/jekyll-4.3.2/exe/:~/.bun/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:/opt/homebrew/opt/postgresql@18/bin
 
 # opencode
 export PATH=$HOME/.opencode/bin:$PATH
@@ -168,12 +169,6 @@ setopt HIST_IGNORE_SPACE
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
-
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
@@ -189,3 +184,12 @@ esac
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 eval "$(saml2aws --completion-script-zsh)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/de10k21533/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/de10k21533/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/de10k21533/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/de10k21533/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="/opt/homebrew/opt/lsof/bin:$PATH"
+
+. "$HOME/.local/share/../bin/env"

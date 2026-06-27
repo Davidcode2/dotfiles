@@ -1,7 +1,9 @@
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export BROWSER='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+#export BROWSER='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+#export BROWSER='/Applications/Arc.app/Contents/MacOS/Arc'
+export BROWSER="open -a 'Arc'"
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -19,3 +21,4 @@ export ATAC_KEY_BINDINGS=$HOME/.config/atac/vim_key_bindings.toml
 
 # JIRA CLI
 export JIRA_API_TOKEN=$(security find-generic-password -a "$USER" -s "JIRA_API_TOKEN" -w)
+export CONFLUENCE_API_TOKEN=$(security find-generic-password -a "$USER" -s "CONFLUENCE_API_TOKEN" -w)
