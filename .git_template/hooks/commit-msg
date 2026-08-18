@@ -1,0 +1,42 @@
+#!/bin/sh
+
+SHOPIFY_ROOT="$HOME/code/shopify"
+B2B_ROOT="$HOME/code/b2b"
+REPOSITORY_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || exit 0)
+
+case "$REPOSITORY_ROOT" in
+  "$SHOPIFY_ROOT"|"$SHOPIFY_ROOT"/*|"$B2B_ROOT"|"$B2B_ROOT"/*) ;;
+  *) exit 0 ;;
+esac
+
+MSG_FILE="$1"
+BRANCH_NAME=$(git symbolic-ref --quiet --short HEAD 2>/dev/null || true)
+
+# Read the first OS-/B2B-ticket from the branch name, if there is one.
+TASK_NUMBER=$(printf '%s\n' "$BRANCH_NAME" \
+  | grep -o -E '(^|[^[:alnum:]])(OS|B2B)-[0-9]+' \
+  | sed -E 's/^[^[:alnum:]]+//' \
+  | sed -n '1p')
+HAS_TASK_NUMBER=$(grep -q -E '(^|[^[:alnum:]])(OS|B2B)-[0-9]+' "$MSG_FILE"; printf '%s' "$?")
+
+# Prepend the branch ticket unless the message already starts with it.
+if [ -n "$TASK_NUMBER" ]; then
+  if ! grep -q -E "^${TASK_NUMBER}([^[:alnum:]]|$)" "$MSG_FILE"; then
+    TEMP_FILE="${MSG_FILE}.tmp.$$"
+    {
+      printf '%s ' "$TASK_NUMBER"
+      cat "$MSG_FILE"
+    } > "$TEMP_FILE" && mv "$TEMP_FILE" "$MSG_FILE"
+  fi
+fi
+
+if [ "$HAS_TASK_NUMBER" -eq 0 ] || [ -n "$TASK_NUMBER" ]; then
+  echo
+  echo "Yay, task number - your colleagues are proud of you!"
+else
+  echo
+  echo "Info: Got task number? No OS-/B2B- ticket found in the branch name."
+  echo "To add a task number, run git commit --amend -m '<message>'"
+fi
+
+exit 0

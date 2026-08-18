@@ -1,0 +1,59 @@
+#!/bin/sh
+
+# Optionale Allowlist-Datei (je Zeile ein Regex, um False-Positives zu unterdrücken)
+ALLOWLIST_FILE=".secrets-allowlist"
+
+# Blockiere bestimmte Datei-Typen generell (private Keys, .env etc.)
+PROHIBITED_PATHS='(^|/)(\.env(\..*)?$|id_rsa(\.pub)?$|id_ed25519(\.pub)?$|.*\.(pem|p12|pfx)$)|appsettings.json'
+
+# Typische Token-/Key-Muster (als Extended Regex, -E)
+SECRETS_REGEX='(shpat_[A-Za-z0-9]{20,})|([[:<:]](api[_-]?key|token|password|secret)[[:>:]])[[:space:]]*[:=][[:space:]]*[A-Za-z0-9_\-+/=]{12,}'
+
+
+echo "Running pre-commit secret scan..."
+
+# 1) Blockiere verbotene Dateipfade in den gestagten Änderungen
+if git diff --cached --name-only -z \
+  | tr '\0' '\n' \
+  | grep -E "$PROHIBITED_PATHS" >/dev/null 2>&1; then
+  echo
+  echo "Error: Commit blockiert. Verbotene Datei-Typen (.env, private Keys, Zertifikate) im Staging."
+  git diff --cached --name-only | grep -E "$PROHIBITED_PATHS" || true
+  exit 1
+fi
+
+# 2) Suche nach Secrets in gestagtem Inhalt (nur Text; -I ignoriert Binärdateien)
+if git grep --cached -n -I -E "$SECRETS_REGEX" -- \
+  ":(exclude)node_modules" \
+  ":(exclude)bin" \
+  ":(exclude)obj" \
+  ":(exclude).git" \
+  . > .git/.secret_hits 2>/dev/null; then
+
+  # Allowlist anwenden, falls vorhanden
+  if [ -f "$ALLOWLIST_FILE" ]; then
+    grep -Evf "$ALLOWLIST_FILE" .git/.secret_hits > .git/.secret_hits.filtered || true
+  else
+    cp .git/.secret_hits .git/.secret_hits.filtered
+  fi
+
+  if [ -s .git/.secret_hits.filtered ]; then
+    echo
+    echo "Error: Mögliche Secrets in gestagten Änderungen gefunden:"
+    cat .git/.secret_hits.filtered | sed 's/^/  - /'
+    echo
+    echo "Tipps:"
+    echo "  - Entferne/rotierte das Secret und commite erneut."
+    echo "  - Falls False Positive: Regex in .secrets-allowlist eintragen (projektlokal)."
+    exit 1
+  fi
+fi
+
+# 3) Optional: explizit nach 'NOCOMMIT' in gestagten Inhalten suchen
+if git grep --cached -n -I -e 'NOCOMMIT' -- . >/dev/null 2>&1; then
+  echo
+  echo "Error: Commit nicht möglich, 'NOCOMMIT' im Staging gefunden."
+  exit 1
+fi
+
+exit 0
