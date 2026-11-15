@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }: {
-  home.packages = [ pkgs.tmuxinator ];
+  home.packages = [ pkgs.tmuxinator pkgs.tree-sitter pkgs.gcc ];
   programs.neovim = {
     enable = true;
     defaultEditor = true;
