@@ -1,0 +1,8 @@
+# Local-only settings and credentials must never enter the Nix store.
+.env
+.env.*
+!.env.example
+*.local
+result
+result-*
+config/alacritty/themes/

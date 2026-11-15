@@ -1,0 +1,44 @@
+{
+  "skill_name": "deploy-image",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Generate a deployment proposal and complete app-of-apps manifests for public image nginxdemos/hello:plain-text as demo scratch-hello at https://jakob-lingel.dev/demo/scratch-hello. Use fixture.md as the authoritative environment. Write only into the supplied output directory. No live cluster, networking, registry, git, bd or Terraform commands; don't edit real repositories. Include a deployment report explaining path behavior, TLS ownership, checks actually performed and remaining verification.",
+      "expected_output": "Coherent manifests for a public demo sharing the apex route/certificate without unnecessary DNS, secrets, duplicate TLS issuance or build setup; path forwarding is justified and live status is not invented.",
+      "files": ["evals/fixture.md"],
+      "expectations": [
+        "Manifests route the exact demo prefix to a matching Service and workload port and justify forwarding the path unchanged.",
+        "The shared apex TLS owner is preserved without a cross-namespace TLS Secret reference, duplicate Certificate request or unnecessary DNS change.",
+        "The public root-required image receives no unnecessary pull credential, database or forced non-root UID, and direct Pod probes match its documented runtime.",
+        "Actual offline checks are distinguished from unperformed schema/admission/live verification and the mutable image tag is acknowledged."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Generate complete app-of-apps manifests and narrowly scoped proposed infra edits for tool report-viewer using private ghcr.io/davidcode2/report-viewer:1.4.2 at reports.jakob-lingel.dev. Use fixture.md as authoritative. Write only into the supplied output directory. No live cluster, networking, registry, git, bd or Terraform commands; don't edit real repositories. Include required prerequisites and exact verification steps. The existing GitHub App repo credential in argocd already lets Argo read our Git repo.",
+      "expected_output": "Namespaced GHCR pull ExternalSecret and workload reference independent of Argo Git auth; proper SSM docker JSON mapping, scoped DNS, new-host TLS and no local Terraform execution.",
+      "files": ["evals/fixture.md"],
+      "expectations": [
+        "A namespaced ExternalSecret materializes kubernetes.io/dockerconfigjson from /shared/ghcr/dockerconfigjson and the Pod references that Secret.",
+        "The output distinguishes Argo Git credentials from GHCR image-pull access and adds no unnecessary IAM or SSM resources.",
+        "The proposed infra change adds only the reports CNAME and the Ingress requests TLS for reports.jakob-lingel.dev without an invented www host.",
+        "Runtime configuration matches UID 10001, port 8080, PUBLIC_URL and documented probes, with writable /tmp and no dependency on an unavailable reloader.",
+        "Verification covers registry Secret readiness, current Argo revision, ready service endpoints, DNS and TLS while honestly reporting no live deployment or Terraform execution."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Generate a complete proposal and manifests for real tool field-notes using public ghcr.io/davidcode2/field-notes:2.3.0 at notes.jakob-lingel.dev, PostgreSQL 16 and 5Gi persistent uploads plus 10Gi database storage. Use fixture.md as authoritative. Keep uploaded files and the database when uninstalling. Include the required first-install migration and concrete backup/restore design. Write only into the supplied output directory. No live cluster, networking, registry, git, bd or Terraform commands; don't edit real repositories. Explain limitations and any unresolved inputs rather than inventing them.",
+      "expected_output": "First-install-safe secret/database/migration/app ordering, no single-writer overlap, correct PVC and credential mappings, local-path failure limitations, namespace-safe retention, and an honest backup destination blocker.",
+      "files": ["evals/fixture.md"],
+      "expectations": [
+        "PostgreSQL and app credentials map to the existing SSM sources with correct documented env names, internal DB service and separate upload/database mounts.",
+        "First-install migration can run after database/Secret prerequisites and before app readiness without a PreSync dependency trap or WaitForFirstConsumer PVC-wave deadlock.",
+        "App and database rollout configuration avoids overlapping single-writer instances, and the report does not describe one-replica RWO as an application write lock.",
+        "Retention explicitly protects against both Argo PVC deletion and Namespace/Application cascade, and uninstall removes compute while keeping the requested data.",
+        "The proposal explains node-local storage failure limits, gives a workable off-node backup and restore design, and identifies unspecified backup inputs rather than claiming operational backups.",
+        "Checks distinguish offline results from live readiness, image digest, DNS/TLS, HCL CI and actual persistence/restore verification."
+      ]
+    }
+  ]
+}

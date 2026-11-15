@@ -1,0 +1,23 @@
+{
+  "skill_name": "deploy-app",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Deploy a new static site called 'blog-site' to the kubernetes cluster. It should be a blog platform with a custom domain 'myblog.dev'. I need the basic setup with CI/CD, Docker, and all the infrastructure configured.",
+      "expected_output": "Complete deployment setup with GitHub repository, CI/CD workflows, Dockerfile, Kubernetes manifests in app-of-apps, DNS configuration, and SSM parameters. Should include all 8 phases from the skill.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I need to deploy a full-stack application called 'inventory-app' with a PostgreSQL database. The app needs database migrations and secrets management. Domain is 'inventory.mysite.com'.",
+      "expected_output": "Full-stack deployment configuration including database migration jobs, external secrets configuration for database credentials, deployment manifests with environment variables, and SSM parameter modules for database secrets.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Set up a Strapi CMS application called 'content-manager' on the kubernetes cluster. It needs all the CMS-specific secrets configured.",
+      "expected_output": "Strapi CMS deployment with proper secret configuration for app keys, API token salt, admin JWT secret, and transfer token salt. Should include CMS-specific SSM parameters and deployment configuration.",
+      "files": []
+    }
+  ]
+}
