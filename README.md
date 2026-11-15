@@ -24,8 +24,8 @@ and activates the pinned Home Manager profile. It can be rerun. Downloads and
 builds may take significant time, particularly on the first run. It does not
 configure a bootloader, drivers, Wi-Fi credentials, printer, or display manager.
 Select a hardware-appropriate graphics driver and start Sway from a login
-session. To use Zsh as the login shell, run `chsh -s /usr/bin/zsh` and log in
-again. Run `tailscale up` to authenticate the new machine.
+session. The bootstrap sets Zsh as the login shell; log in again to use it.
+Run `tailscale up` to authenticate the new machine.
 
 Docker is installed but the user is not automatically granted daemon access.
 If desired, run `./scripts/bootstrap-arch.sh --docker-group` and log out and
@@ -125,10 +125,9 @@ pre-migration files if needed.
 
 Zsh loads optional `~/.config/zsh/local.zsh` at runtime. Use it for local PATH
 additions and secret loading, for example `export ANTHROPIC_API_KEY=$(< ~/keys/.anthropic-secret-key.txt)`;
-never place secrets in flake files or any Nix source path. The copied LazyVim
-configuration is linked from the Nix store: change its lock file in the
-checkout rather than through a running editor. Restart OpenCode after switching
-its configuration.
+never place secrets in flake files or any Nix source path. LazyVim uses a writable
+lock file in `~/.local/share/nvim/lazy-lock.json`, initially seeded from the
+checkout. Restart OpenCode after switching its configuration.
 
 ## NixOS
 

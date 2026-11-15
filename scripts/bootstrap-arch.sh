@@ -27,6 +27,8 @@ packages=(
 )
 sudo pacman -Syu --needed "${packages[@]}"
 sudo systemctl enable --now NetworkManager.service nix-daemon.socket docker.socket tailscaled.service cups.socket
+sudo usermod -s /usr/bin/zsh "$USER"
+nix --extra-experimental-features 'nix-command flakes' store ping --store daemon
 
 if "$docker_group"; then
   sudo usermod -aG docker "$USER"
