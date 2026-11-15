@@ -11,7 +11,10 @@
 
   outputs = { nixpkgs, home-manager, ... }: {
     homeConfigurations."jakob@archlinux" = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs { system = "x86_64-linux"; };
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [ "terraform" ];
+      };
       modules = [ ./hosts/arch/home.nix ];
     };
 

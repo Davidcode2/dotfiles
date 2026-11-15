@@ -48,12 +48,10 @@
             "warning": 25,
             "critical": 10
         },
-        "on-click": "sh ~/.local/bin/notifications/battery-info-left-click.sh",
         "format-icons": ["", "", "", "", ""],
     },
 
     "backlight": {
-        "device": "DP-1",
         "format": "{icon} {percent}%",
         "format-icons": ["", "", "", "", "", "", "", "", ""],
     },
@@ -61,7 +59,6 @@
     "network": {
         "format-wifi": "󰖩  {essid}",
         "format-ethernet": "󰈀 wired",
-        "on-click": "sh ~/.config/rofi/launchers/wifi/wifi.sh",
         "format-disconnected": "󰌙  Disconnected",
     },
 
@@ -93,7 +90,7 @@
     },
 
     "custom/timer": {
-        "exec": "~/.scripts/waybar_timer hook",
+        "exec": "waybar_timer hook",
         "exec-on-event": false,
         "return-type": "json",
         "format": "{icon} {0}",
@@ -102,12 +99,11 @@
             "running": " ",
             "paused": "󰏨 "
         },
-        "on-click": "~/.scripts/waybar_timer new 25 'notify-send \"Session finished\"'",
-        "on-click-middle": "~/.scripts/waybar_timer cancel",
-        "on-click-right": "~/.scripts/waybar_timer togglepause",
-        "on-scroll-up": "~/.scripts/waybar_timer increase 60 || ~/.scripts/waybar_timer new 1 'notify-send -u critical \"Timer expired\"'",
-        "on-scroll-down": "~/.scripts/waybar_timer decrease 60"
+        "on-click": "waybar_timer new 25 'notify-send \"Session finished\"'",
+        "on-click-middle": "waybar_timer cancel",
+        "on-click-right": "waybar_timer togglepause",
+        "on-scroll-up": "waybar_timer increase 60 || waybar_timer new 1 'notify-send -u critical \"Timer expired\"'",
+        "on-scroll-down": "waybar_timer decrease 60"
     }
 }
 // vim:ft=json
-

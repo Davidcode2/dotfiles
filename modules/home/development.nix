@@ -1,4 +1,5 @@
 { pkgs, ... }: {
+  home.packages = [ pkgs.tmuxinator ];
   programs.neovim = {
     enable = true;
     defaultEditor = true;

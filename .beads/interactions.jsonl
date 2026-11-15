@@ -1,0 +1,1 @@
+{"id":"int-d1bf2292b832fbf57c437a569f6245ac","kind":"field_change","created_at":"2026-11-15T19:39:49.205277485Z","actor":"Jakob Lingel","issue_id":"dotfiles-d62","extra":{"field":"status","new_value":"closed","old_value":"in_progress","reason":"Nix desktop configuration implemented and activation package built"}}

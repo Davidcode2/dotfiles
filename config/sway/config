@@ -25,17 +25,16 @@ set $menu "wofi --show drun"
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/Wallpapers/blue_purple_gradient.jpg fill
+output * bg #282828 solid_color
 
 # Example configuration:
 #
-output eDP-1 mode 2560x1600 position 0,0 scale 1.5
-output HDMI-A-1 mode 1920x1080 position 2560,0 scale 1.0
+include ~/.config/sway/outputs.conf
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Clipboard config
-exec_always wl-paste --watch cliphist store
+exec wl-paste --watch cliphist store
 bindsym Mod4+v exec cliphist list | wofi -S dmenu | cliphist decode | wl-copy
 
 ### Idle configuration
@@ -43,7 +42,7 @@ bindsym Mod4+v exec cliphist list | wofi -S dmenu | cliphist decode | wl-copy
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 300 'swaylock -f -i /home/jakob/Pictures/Wallpapers/dark_streaks.jpg' \
+         timeout 300 'swaylock -f -c 000000' \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
 #
@@ -52,8 +51,8 @@ exec swayidle -w \
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 exec udiskie &
-exec_always dunst
-exec_always --no-startup-id nm-applet
+exec dunst
+exec --no-startup-id nm-applet
 
 ### Input configuration
 #
@@ -219,7 +218,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-bindsym --release Mod4+l exec 'swaylock -f -i /home/jakob/Pictures/Wallpapers/dark_streaks.jpg'
+bindsym --release Mod4+l exec 'swaylock -f -c 000000'
 
 # Screenshot
 
@@ -231,7 +230,7 @@ bindsym $mod+p move workspace to output right
 
 # Pomodoro
 
-exec_always ~/.scripts/waybar_timer serve
+exec waybar_timer serve
 
 #####################
 ## assign programs ##
@@ -242,7 +241,7 @@ bindsym Mod4+2 exec firefox
 
 assign [app_id="firefox"] workspace number 2
 
-exec_always waybar 
+exec waybar
 
 #####################
 ###     gaps      ###

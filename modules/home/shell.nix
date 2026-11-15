@@ -28,9 +28,21 @@
       autoload -U edit-command-line
       zle -N edit-command-line
       bindkey -M vicmd '^v' edit-command-line
+      function zle-keymap-select {
+        case $KEYMAP in
+          vicmd) printf '\e[1 q' ;;
+          main|viins) printf '\e[5 q' ;;
+        esac
+      }
+      zle -N zle-keymap-select
+      function zle-line-init { printf '\e[5 q'; }
+      zle -N zle-line-init
+      function y. { pwd | wl-copy; }
+      function cdp { local dir; dir="$(wl-paste --no-newline)" && cd -- "$dir"; }
       [[ -r "$HOME/.config/zsh/local.zsh" ]] && source "$HOME/.config/zsh/local.zsh"
     '';
   };
   programs.fzf.enable = true;
+  programs.fzf.defaultOptions = [ "--layout=reverse" "--height=40%" ];
   home.packages = [ pkgs.zsh ];
 }

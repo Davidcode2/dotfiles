@@ -27,7 +27,7 @@ render_timer = false
 size = 10.0
 
 [font.bold]
-family = "InconsolataNerdFont"
+family = "Inconsolata Nerd Font"
 style = "Medium"
 
 [font.glyph_offset]
@@ -35,11 +35,11 @@ x = 0
 y = 0
 
 [font.italic]
-family = "InconsolataNerdFont"
+family = "Inconsolata Nerd Font"
 style = "Light Italic"
 
 [font.normal]
-family = "InconsolataNerdFont"
+family = "Inconsolata Nerd Font"
 style = "Regular"
 
 [font.offset]
@@ -359,9 +359,6 @@ multiplier = 3
 [selection]
 save_to_clipboard = false
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
-
-[terminal.shell]
-program = "/usr/bin/zsh"
 
 [window]
 decorations = "full"

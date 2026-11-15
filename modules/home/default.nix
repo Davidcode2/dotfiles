@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  imports = [ ./shell.nix ./development.nix ./desktop.nix ./opencode.nix ];
+  imports = [ ./shell.nix ./development.nix ./workstation.nix ./desktop.nix ./opencode.nix ];
 
   home.stateVersion = "25.11";
   programs.home-manager.enable = true;
