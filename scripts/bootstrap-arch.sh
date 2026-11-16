@@ -18,6 +18,14 @@ if [[ $(id -un) != jakob || $HOME != /home/jakob ]]; then
   printf 'This profile expects user jakob with home /home/jakob; adapt hosts/arch/home.nix first.\n' >&2
   exit 1
 fi
+if [[ ! -r $HOME/.config/sops/age/keys.txt ]]; then
+  printf 'Restore the age identity to ~/.config/sops/age/keys.txt before continuing. See README.md.\n' >&2
+  exit 1
+fi
+if ! systemctl --user show-environment >/dev/null 2>&1; then
+  printf 'A running systemd user manager is required to load SSH secrets. Log in normally and retry.\n' >&2
+  exit 1
+fi
 
 packages=(
   base-devel sudo git openssh ca-certificates networkmanager nix docker docker-compose docker-buildx
@@ -38,4 +46,11 @@ fi
 printf 'Building Home Manager profile; existing unmanaged files may block activation.\n'
 activation=$(nix --extra-experimental-features 'nix-command flakes' build --no-link --print-out-paths "path:$root#homeConfigurations.\"jakob@archlinux\".activationPackage")
 "$activation/activate"
-printf 'Provisioning finished. Start a new login session and restore private data separately.\n'
+systemctl --user restart sops-nix.service
+for key in zeiss hetzner-1; do
+  if [[ ! -r $HOME/.config/sops-nix/secrets/$key ]]; then
+    printf 'SSH secret %s is unavailable; inspect systemctl --user status sops-nix.service.\n' "$key" >&2
+    exit 1
+  fi
+done
+printf 'Provisioning finished. Start a new login session and restore other private data separately.\n'

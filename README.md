@@ -10,8 +10,10 @@ worktree.
 The bootstrap targets an installed x86_64 Arch system, not a blank disk. First
 install Arch with a kernel, firmware and hardware drivers, working internet,
 Git, and a `jakob` account with home `/home/jakob` and sudo access. Clone this
-repository into `~/dotfiles` and review `hosts/arch/sway-outputs.conf` for the
+repository into `~/dotfiles` (use HTTPS authentication if SSH is not yet set up)
+and review `hosts/arch/sway-outputs.conf` for the
 new machine. The default solid-color background works without a wallpaper.
+Restore the age identity as described below before running the bootstrap.
 
 ```sh
 cd ~/dotfiles
@@ -42,9 +44,9 @@ linked as user Docker CLI plugins. The lock file pins Nix inputs; Arch packages
 follow the rolling Arch repositories and are not version-pinned. Project-specific
 Nix development shells can provide different language or CLI versions.
 
-Restore SSH keys, kubeconfig, cloud/API credentials, browser
+Restore kubeconfig, cloud/API credentials, browser
 and mail profiles, documents and wallpaper from secure backups separately. Do
-not place secrets in this repository or in Nix source files: they may be copied
+not place plaintext secrets in this repository or in Nix source files: they may be copied
 to the world-readable Nix store. Review existing `~/.docker/cli-plugins`, shell,
 editor and desktop files before activation: Home Manager refuses to overwrite
 unmanaged files. Move them aside or back them up before retrying.
@@ -52,10 +54,28 @@ unmanaged files. Move them aside or back them up before retrying.
 ### SSH
 
 Home Manager manages the SSH client aliases in `modules/home/ssh.nix` and runs
-an SSH agent. The aliases reference private keys in `~/.ssh`; restore those
-keys separately from a secure backup, with permissions such as `chmod 600
-~/.ssh/zeiss ~/.ssh/hetzner-1`. Keep private keys out of Nix files and the Nix
-store. Host keys in `~/.ssh/known_hosts` remain locally managed.
+an SSH agent. SOPS encrypts the `zeiss` and `hetzner-1` private keys in
+`secrets/`; only their ciphertext enters the Nix store. The user systemd
+`sops-nix.service` decrypts them into `$XDG_RUNTIME_DIR/secrets.d` and links
+them under `~/.config/sops-nix/secrets`. Existing files in `~/.ssh` are not
+overwritten. Host keys in `~/.ssh/known_hosts` remain locally managed.
+
+Before the first activation on **each Arch or NixOS host**, restore the age
+identity from the password manager or encrypted offline backup to
+`~/.config/sops/age/keys.txt`. Create the directory with `mkdir -p -m 700
+~/.config/sops/age`, restore the file without exposing its contents, and run
+`chmod 600 ~/.config/sops/age/keys.txt`. The identity is unencrypted on the
+host; protect access to the account and backups. Keep both backups current and
+test restoring one before relying on this setup. SSH key passphrases remain
+unchanged.
+
+After activation, check `systemctl --user status sops-nix.service` and that
+`~/.config/sops-nix/secrets/zeiss` and `hetzner-1` are readable only by the
+user. If decryption fails, check the restored identity and run `systemctl --user
+restart sops-nix.service`; use `journalctl --user -u sops-nix.service` for
+diagnostics. A running user systemd manager is required. Activation can skip
+starting the service when the manager is unavailable, so a successful build or
+activation alone does not confirm secrets are loaded. Check again after login.
 
 On an existing installation, back up `~/.ssh/config` before switching, since
 Home Manager will not overwrite an unmanaged file:
@@ -76,9 +96,36 @@ After switching, log out and back in so the session gets a fresh environment.
 Home Manager sets `SSH_AUTH_SOCK` only when it is unset; if another component
 still sets it, disable that integration or remove its override. Check with
 `systemctl --user status ssh-agent` and `printenv SSH_AUTH_SOCK`, then load keys
-as needed with `ssh-add ~/.ssh/zeiss ~/.ssh/hetzner-1`. Agent-held keys need to
+as needed with `ssh-add ~/.config/sops-nix/secrets/zeiss ~/.config/sops-nix/secrets/hetzner-1`. Agent-held keys need to
 be loaded again after restarting the agent. Verify aliases with `ssh -G zeiss`
 or `ssh -G k8s-node-1` before connecting.
+
+### Maintaining encrypted SSH keys
+
+The age public recipient is in `.sops.yaml`. `sops` and `age` are installed by
+Home Manager. To replace a key without creating a plaintext repository file,
+encrypt directly from its existing private file, for example:
+
+```sh
+sops --encrypt --input-type binary --output-type binary \
+  --filename-override secrets/zeiss.enc --output secrets/zeiss.enc ~/.ssh/zeiss
+```
+
+Run `sops updatekeys --input-type binary secrets/zeiss.enc`
+and the equivalent command for `hetzner-1.enc` after changing recipients in
+`.sops.yaml`; the current identity must be available. To rotate the age
+identity, generate a new identity outside the repository, back it up in both
+places, add its public recipient alongside the old one, update both files,
+and verify decryption using the new identity. Then remove the old recipient,
+update both files again, and deploy the new identity to every host. Do not
+remove the old identity until recovery and deployment are verified. If the
+old identity was compromised, rotate the SSH credentials too: old ciphertext
+remains in Git history.
+
+For a new secret, add a matching SOPS creation rule if necessary, encrypt it
+without putting plaintext in the checkout, and declare it in Home Manager.
+Treat temporary editor files, shell history and backups as sensitive; never
+write plaintext secrets into a Nix source or the Nix store.
 
 Check the resulting environment after a new login:
 
@@ -96,7 +143,8 @@ systemctl is-active NetworkManager nix-daemon.socket docker.socket tailscaled cu
 
 ## Existing Arch installation
 
-Clone this repository to `~/dotfiles`. Install the Arch `nix` package and start
+Clone this repository to `~/dotfiles` and restore the age identity as described
+above. Install the Arch `nix` package and start
 the daemon socket, or use the official multi-user installer:
 https://nixos.org/download/. For the Arch package:
 
@@ -174,7 +222,9 @@ workstation package profile is enabled by default; set
 `home-manager.users.<name>.dotfiles.workstation.enable = false` for a smaller
 headless installation. Core shell, editor, tmux and OpenCode configuration remain
 enabled. The VM exercises the headless profile; the full desktop and workstation
-profile still need testing on NixOS hardware.
+profile still need testing on NixOS hardware. Restore the age identity to the
+managed user's home before activation. The separate VM configuration pins its
+own sops-nix source; update that pin when updating the flake input.
 
 `hosts/nixos-vm/configuration.nix` contains the VM-specific system configuration,
 using its generated `/etc/nixos/hardware-configuration.nix` and the VM's existing
@@ -193,6 +243,8 @@ nix flake check
 home-manager switch --flake .#jakob@archlinux
 ```
 
-Run `nix flake update` when you want to update the pinned dependencies. New
+Run `nix flake update` when you want to update the pinned dependencies. The
+sops-nix URL is pinned to a compatible revision; update that revision
+explicitly along with the NixOS VM pin. New
 files in a Git-backed flake must be added to Git's index before Nix can see
 them. Review changes and credentials before committing or publishing.

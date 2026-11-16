@@ -1,4 +1,4 @@
-home-manager: { config, lib, ... }: {
+home-manager: sops-module: { config, lib, ... }: {
   imports = [ home-manager.nixosModules.home-manager ];
   options.dotfiles.homeUser = lib.mkOption {
     type = lib.types.str;
@@ -10,7 +10,7 @@ home-manager: { config, lib, ... }: {
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     home-manager.users.${config.dotfiles.homeUser} = {
-      imports = [ ../../modules/home ];
+      imports = [ sops-module ../../modules/home ];
       home.username = config.dotfiles.homeUser;
       home.homeDirectory = config.users.users.${config.dotfiles.homeUser}.home;
     };

@@ -1,0 +1,3 @@
+creation_rules:
+  - path_regex: secrets/[^/]+\.enc$
+    age: age154gdwn303d2883cj8a594g2yfrnfzluspx42804nzsvzj8e6m3kqcfvwrg
