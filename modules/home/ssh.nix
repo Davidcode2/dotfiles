@@ -1,4 +1,11 @@
-{ config, pkgs, ... }: {
+{ config, lib, options, pkgs, ... }:
+let
+  usesSettings = options.programs.ssh ? settings;
+  convertHost = host: {
+    HostName = host.hostname;
+    IdentityFile = host.identityFile;
+  } // lib.optionalAttrs (host ? identitiesOnly) { IdentitiesOnly = host.identitiesOnly; };
+in {
   sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
   sops.secrets = {
     zeiss = { sopsFile = ../../secrets/zeiss.enc; format = "binary"; };
@@ -8,7 +15,8 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    ${if usesSettings then "settings" else "matchBlocks"} =
+      (if usesSettings then lib.mapAttrs (_: convertHost) else lib.id) {
       zeiss = {
         hostname = "github.com";
         identityFile = config.sops.secrets.zeiss.path;

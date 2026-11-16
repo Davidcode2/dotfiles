@@ -224,7 +224,8 @@ headless installation. Core shell, editor, tmux and OpenCode configuration remai
 enabled. The VM exercises the headless profile; the full desktop and workstation
 profile still need testing on NixOS hardware. Restore the age identity to the
 managed user's home before activation. The separate VM configuration pins its
-own sops-nix source; update that pin when updating the flake input.
+own sops-nix source for compatibility with its NixOS channel; review it separately
+when updating dependencies.
 
 `hosts/nixos-vm/configuration.nix` contains the VM-specific system configuration,
 using its generated `/etc/nixos/hardware-configuration.nix` and the VM's existing
@@ -243,8 +244,41 @@ nix flake check
 home-manager switch --flake .#jakob@archlinux
 ```
 
+### Arch test VM
+
+To copy the current host checkout, including uncommitted changes, to the running
+`arch-nix-test` VM, first make sure `rsync` is installed on both the host and VM.
+If it is missing in the VM, connect and install it:
+
+```sh
+ssh -i ~/vms/arch-nix-test/id_ed25519 -p 22242 jakob@127.0.0.1
+sudo pacman -S rsync
+exit
+```
+
+Then run on the host:
+
+```sh
+rsync -az --exclude=.git --exclude=.beads \
+  -e "ssh -i $HOME/vms/arch-nix-test/id_ed25519 -p 22242" \
+  ~/dotfiles/ jakob@127.0.0.1:~/dotfiles/
+```
+
+Connect to the VM again and apply the profile as `jakob`:
+
+```sh
+cd ~/dotfiles
+home-manager switch --flake .#jakob@archlinux
+```
+
+If the VM checkout is Git-backed, stage newly copied files with `git add` before
+switching so the flake can see them. This copy does not delete files removed from
+the host checkout; remove obsolete files in the VM as needed. Alternatively,
+commit and push changes on the host, then run `git pull` in the VM before the
+switch. The profile expects the user `jakob` and home directory `/home/jakob`.
+
 Run `nix flake update` when you want to update the pinned dependencies. The
-sops-nix URL is pinned to a compatible revision; update that revision
-explicitly along with the NixOS VM pin. New
+sops-nix URL is pinned to a compatible revision; review that revision and the
+separate NixOS VM pin when updating dependencies. New
 files in a Git-backed flake must be added to Git's index before Nix can see
 them. Review changes and credentials before committing or publishing.

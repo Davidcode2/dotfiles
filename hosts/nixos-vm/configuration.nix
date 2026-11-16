@@ -8,8 +8,8 @@
         sha256 = "0y9xxavks8m1a0q50cn9zz5wjw3c3dcqklvv0b3qs9lfg02ijss7";
       }) + "/nixos";
     } ((builtins.fetchTarball {
-      url = "https://github.com/Mic92/sops-nix/archive/c5eebd4eb2e3372fe12a8d70a248a6ee9dd02eff.tar.gz";
-      sha256 = "05b0gpg2xb43ya2kps3csj91jh1g926br1cgjfqr1ckacvgjnmy0";
+      url = "https://github.com/Mic92/sops-nix/archive/11e5885d241743ff0193465d533b20e754bc3ce0.tar.gz";
+      sha256 = "1l870303ck550rsnxvy984c0gjd7yzhwghsxkm7nv5fzkz3f3byy";
     }) + "/modules/home-manager/sops.nix"))
   ];
 
@@ -37,5 +37,9 @@
   programs.zsh.enable = true;
   dotfiles.homeUser = "nixosgod";
   home-manager.users.nixosgod.dotfiles.workstation.enable = false;
+  home-manager.users.nixosgod.programs.neovim = {
+    withRuby = false;
+    withPython3 = false;
+  };
   system.stateVersion = "26.05";
 }
