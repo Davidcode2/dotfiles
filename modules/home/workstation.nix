@@ -3,7 +3,7 @@
 
   config = lib.mkIf config.dotfiles.workstation.enable {
   home.packages = with pkgs; [
-    openssh curl wget rsync unzip zip tree
+    curl wget rsync unzip zip tree
     python3 nodejs_24 rustc cargo rust-analyzer dotnetCorePackages.sdk_10_0-bin typst
     docker-compose docker-buildx kubectl terraform ansible hcloud doctl
     postgresql

@@ -42,12 +42,43 @@ linked as user Docker CLI plugins. The lock file pins Nix inputs; Arch packages
 follow the rolling Arch repositories and are not version-pinned. Project-specific
 Nix development shells can provide different language or CLI versions.
 
-Restore SSH keys and configuration, kubeconfig, cloud/API credentials, browser
+Restore SSH keys, kubeconfig, cloud/API credentials, browser
 and mail profiles, documents and wallpaper from secure backups separately. Do
 not place secrets in this repository or in Nix source files: they may be copied
 to the world-readable Nix store. Review existing `~/.docker/cli-plugins`, shell,
 editor and desktop files before activation: Home Manager refuses to overwrite
 unmanaged files. Move them aside or back them up before retrying.
+
+### SSH
+
+Home Manager manages the SSH client aliases in `modules/home/ssh.nix` and runs
+an SSH agent. The aliases reference private keys in `~/.ssh`; restore those
+keys separately from a secure backup, with permissions such as `chmod 600
+~/.ssh/zeiss ~/.ssh/hetzner-1`. Keep private keys out of Nix files and the Nix
+store. Host keys in `~/.ssh/known_hosts` remain locally managed.
+
+On an existing installation, back up `~/.ssh/config` before switching, since
+Home Manager will not overwrite an unmanaged file:
+
+```sh
+mv ~/.ssh/config ~/.ssh/config.pre-home-manager
+```
+
+On Arch, the distribution's socket-activated SSH agent and GCR's SSH agent may
+already be enabled. Home Manager supplies its own `ssh-agent.service` and uses
+`$XDG_RUNTIME_DIR/ssh-agent`. Before switching, disable the competing sockets:
+
+```sh
+systemctl --user disable --now ssh-agent.socket gcr-ssh-agent.socket
+```
+
+After switching, log out and back in so the session gets a fresh environment.
+Home Manager sets `SSH_AUTH_SOCK` only when it is unset; if another component
+still sets it, disable that integration or remove its override. Check with
+`systemctl --user status ssh-agent` and `printenv SSH_AUTH_SOCK`, then load keys
+as needed with `ssh-add ~/.ssh/zeiss ~/.ssh/hetzner-1`. Agent-held keys need to
+be loaded again after restarting the agent. Verify aliases with `ssh -G zeiss`
+or `ssh -G k8s-node-1` before connecting.
 
 Check the resulting environment after a new login:
 
