@@ -19,6 +19,6 @@
     };
 
     # Import this module into a real NixOS host after generating its hardware configuration.
-    nixosModules.jakob-home = import ./hosts/nixos-template/home-module.nix home-manager;
+    nixosModules.jakob-home = import ./hosts/nixos/home-module.nix home-manager;
   };
 }

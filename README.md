@@ -136,9 +136,21 @@ its boot loader, file systems, networking, user and `system.stateVersion`, then
 include `self.nixosModules.jakob-home` in that host's module list. Enable
 `dotfiles.wayland.enable` in `home-manager.users.jakob` if desired. This is a
 Home Manager integration module, not an installable hardware configuration.
-The module fixes the user and home directory to `jakob` and `/home/jakob`;
-adapt it for a different user. It imports Home Manager itself, so avoid importing
-the Home Manager NixOS module a second time. No NixOS host has been tested yet.
+It defaults to the existing NixOS user `jakob`; set `dotfiles.homeUser` to use
+another existing user. The home directory comes from the NixOS user definition.
+It imports Home Manager itself, so avoid importing it a second time. The full
+workstation package profile is enabled by default; set
+`home-manager.users.<name>.dotfiles.workstation.enable = false` for a smaller
+headless installation. Core shell, editor, tmux and OpenCode configuration remain
+enabled. The VM exercises the headless profile; the full desktop and workstation
+profile still need testing on NixOS hardware.
+
+`hosts/nixos-vm/configuration.nix` contains the VM-specific system configuration,
+using its generated `/etc/nixos/hardware-configuration.nix` and the VM's existing
+26.05 NixOS/Home Manager sources. The separate VM scripts and deployment guide
+are in `~/documents/code/nixos`. They copy the current checkout to the VM; edits
+are not applied automatically. The VM configuration is not a flake output and
+does not use this flake's 25.11 lock file.
 
 ## Updates
 

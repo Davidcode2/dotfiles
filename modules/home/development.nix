@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }: {
-  home.packages = [ pkgs.tmuxinator pkgs.tree-sitter pkgs.gcc ];
+  home.packages = with pkgs; [
+    tmuxinator tree-sitter gcc gnumake unzip curl
+    nodejs_24 python3 rust-analyzer lua-language-server nixd
+  ];
   programs.neovim = {
     enable = true;
     defaultEditor = true;
