@@ -46,4 +46,14 @@ in {
   };
 
   services.ssh-agent.enable = true;
+
+  # Arch and GCR can export sockets that conflict with the Home Manager agent.
+  # Keep explicitly forwarded or otherwise custom agents intact.
+  programs.zsh.envExtra = ''
+    case "$SSH_AUTH_SOCK" in
+      "$XDG_RUNTIME_DIR/ssh-agent.socket"|"$XDG_RUNTIME_DIR/gcr/ssh")
+        export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent"
+        ;;
+    esac
+  '';
 }

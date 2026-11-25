@@ -93,8 +93,10 @@ systemctl --user disable --now ssh-agent.socket gcr-ssh-agent.socket
 ```
 
 After switching, log out and back in so the session gets a fresh environment.
-Home Manager sets `SSH_AUTH_SOCK` only when it is unset; if another component
-still sets it, disable that integration or remove its override. Check with
+The managed Zsh configuration also redirects the known Arch and GCR socket paths
+to the Home Manager agent; other custom or forwarded agent sockets are preserved.
+Home Manager sets `SSH_AUTH_SOCK` only when it is unset, so disable any other
+conflicting integration or remove its override. Check with
 `systemctl --user status ssh-agent` and `printenv SSH_AUTH_SOCK`, then load keys
 as needed with `ssh-add ~/.config/sops-nix/secrets/zeiss ~/.config/sops-nix/secrets/hetzner-1`. Agent-held keys need to
 be loaded again after restarting the agent. Verify aliases with `ssh -G zeiss`
