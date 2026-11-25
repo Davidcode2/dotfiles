@@ -13,4 +13,8 @@ config/alacritty/themes/
 .beads-credential-key
 .beads/proxieddb/
 
-config/opencode
+config/opencode/skills/confluence-cli
+config/opencode/skills/jira-cli
+config/opencode/skills/taskbox-application-consulting-api
+config/opencode/skills/shopify-app-bootstrap
+config/opencode/skills/github-actions-migration

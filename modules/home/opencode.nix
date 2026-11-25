@@ -9,11 +9,6 @@
     "opencode/skills/deploy-image" = { source = ../../config/opencode/skills/deploy-image; recursive = true; };
     "opencode/skills/create-contact-form" = { source = ../../config/opencode/skills/create-contact-form; recursive = true; };
     "opencode/skills/frontend-design-gpt" = { source = ../../config/opencode/skills/frontend-design-gpt; recursive = true; };
-    "opencode/skills/confluence-cli" = { source = ../../config/opencode/skills/confluence-cli; recursive = true; };
-    "opencode/skills/github-actions-migration" = { source = ../../config/opencode/skills/github-actions-migration; recursive = true; };
-    "opencode/skills/jira-cli" = { source = ../../config/opencode/skills/jira-cli; recursive = true; };
-    "opencode/skills/shopify-app-bootstrap" = { source = ../../config/opencode/skills/shopify-app-bootstrap; recursive = true; };
     "opencode/skills/slidev" = { source = ../../config/opencode/skills/slidev; recursive = true; };
-    "opencode/skills/taskbox-application-consulting-api" = { source = ../../config/opencode/skills/taskbox-application-consulting-api; recursive = true; };
   };
 }
