@@ -4,7 +4,7 @@
 
   config = lib.mkIf config.dotfiles.wayland.enable {
     home.packages = with pkgs; [
-      sway waybar wofi alacritty swayidle swaylock wl-clipboard cliphist
+      waybar wofi wl-clipboard cliphist
       dunst networkmanagerapplet udiskie grim slurp playerctl brightnessctl
       pavucontrol pulseaudio libnotify firefox feh
       nerd-fonts.inconsolata

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, nixpkgs-unstable, ... }: {
   options.dotfiles.workstation.enable = lib.mkEnableOption "the full workstation application profile" // { default = true; };
 
   config = lib.mkIf config.dotfiles.workstation.enable {
@@ -8,7 +8,7 @@
     docker-compose docker-buildx kubectl terraform ansible hcloud doctl
     postgresql
     gimp inkscape thunderbird pandoc
-    opencode
+    nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.opencode
   ];
 
   # Docker discovers CLI plugins in this directory, even with the daemon from Arch.

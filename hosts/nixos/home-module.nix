@@ -1,4 +1,4 @@
-home-manager: sops-module: { config, lib, ... }: {
+home-manager: sops-module: nixpkgs-unstable: { config, lib, ... }: {
   imports = [ home-manager.nixosModules.home-manager ];
   options.dotfiles.homeUser = lib.mkOption {
     type = lib.types.str;
@@ -9,6 +9,7 @@ home-manager: sops-module: { config, lib, ... }: {
     nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "terraform" ];
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
+    home-manager.extraSpecialArgs = { inherit nixpkgs-unstable; };
     home-manager.users.${config.dotfiles.homeUser} = {
       imports = [ sops-module ../../modules/home ];
       home.username = config.dotfiles.homeUser;
