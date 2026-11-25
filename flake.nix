@@ -7,18 +7,23 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix/c5eebd4eb2e3372fe12a8d70a248a6ee9dd02eff";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, home-manager, sops-nix, ... }: {
+  outputs = { nixpkgs, home-manager, sops-nix, nixgl, ... }: {
     homeConfigurations."jakob@archlinux" = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [ "terraform" ];
       };
+      extraSpecialArgs = { inherit nixgl; };
       modules = [ sops-nix.homeManagerModules.sops ./hosts/arch/home.nix ];
     };
 

@@ -12,3 +12,5 @@ config/alacritty/themes/
 *.db
 .beads-credential-key
 .beads/proxieddb/
+
+config/opencode
