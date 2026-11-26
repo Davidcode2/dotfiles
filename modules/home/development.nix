@@ -20,6 +20,7 @@
   '';
   programs.tmux = {
     enable = true;
+    keyMode = "vi";
     escapeTime = 0;
     historyLimit = 10000;
     plugins = with pkgs.tmuxPlugins; [ resurrect continuum ];
